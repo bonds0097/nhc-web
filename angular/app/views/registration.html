@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-3 sidebar">
+        <img class="img-responsive center-block" src="img/nhc_logo.jpg" alt="Nutrition Habit Challenge 2016" />
+        <blockquote class="blockquote-reverse">
+            <p><em>“We all have choices. Each of us needs to take personal responsibility for our health. The Nutrition Habit Challenge is a great opportunity to exercise personal responsibility and model it for the next generation. We hope you will join us."</em></p>
+            <p><small>Bruce and Kym Burke</small></p>
+        </blockquote>
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            <div class="col-md-8">
+                <nhc-alert></nhc-alert>
+            </div>
+        </div>
+        <nhc-registration-signup ng-if="!ctrl.User.isAuthenticated()">
+        </nhc-registration-signup>
+        <nhc-registration-form ng-if="ctrl.User.isAuthenticated()">
+        </nhc-registration-form>
+    </div>
+</div>

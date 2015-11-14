@@ -1,0 +1,101 @@
+<h1>Registration</h1>
+        <p>In order to participate in the Nutrition Habit Challenge 2016, just fill out the form below!</p>
+        <hr>
+        <form class="form-horizontal">
+            <!-- Contact Details -->
+            <div class="form-group">
+                <label for="userFirstName" class="col-sm-{{ctrl.css.labelWidth}} control-label">First Name</label>
+                <div class="col-sm-{{ctrl.css.inputWidth}}">
+                    <input type="text" class="form-control" id="userFirstName" placeholder="Jane">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="userLastName" class="col-sm-{{ctrl.css.labelWidth}} control-label">Last Name</label>
+                <div class="col-sm-{{ctrl.css.inputWidth}}">
+                    <input type="text" class="form-control" id="userLastName" placeholder="Doe">
+                </div>
+            </div>
+            <!-- Commitment -->
+            <div class="form-group">
+                <label for="userCommitCategory" class="col-sm-{{ctrl.css.labelWidth}} control-label">Commitment Category</label>
+                <div class="col-sm-{{ctrl.css.inputWidth}}">
+                    <select id="userCommitCategory" class="form-control">
+                        <option value="">-- Choose Commitment Category --</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="userCommit" class="col-sm-{{ctrl.css.labelWidth}} control-label">Commitment</label>
+                <div class="col-sm-{{ctrl.css.inputWidth}}">
+                    <select id="userCommit" class="form-control">
+                        <option value="">-- Choose Commitment --</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Organization -->
+            <div class="form-group">
+                <div class="col-sm-offset-{{ctrl.css.labelWidth}} col-sm-{{ctrl.css.inputWidth}}">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="ctrl.isUserOrg"> I am joining as part of an organization
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" ng-if="ctrl.isUserOrg">
+                <label for="userOrganization" class="col-sm-{{ctrl.css.labelWidth}} control-label">Organization</label>
+                <div class="col-sm-{{ctrl.css.inputWidth}}">
+                    <input type="text" class="form-control" id="userOrganization" placeholder="Acme Co.">
+                </div>
+            </div>
+            <!-- Mailer Settings -->
+ <!--            <div class="form-group">
+                <label class="col-sm-{{ctrl.css.labelWidth}} control-label" for="userMailer1">Mailing Options</label>
+                <div class="col-sm-{{ctrl.css.inputWidth}}">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="userMailer" id="userMailer1" value="enabled" checked> <strong>Yes!</strong> Please add me to the NHC 2016 mailing list so I can get updates and encouragements during the challenge!
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-offset-{{ctrl.css.labelWidth}} col-sm-{{ctrl.css.inputWidth}}">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="userMailer" id="userMailer2" value="disabled"> No, thank you. Please do not add me to the NHC 2016 mailing list.
+                        </label>
+                    </div>
+                </div>
+            </div> -->
+            <!-- Privacy Settings -->
+            <div class="form-group">
+                <label class="col-sm-{{ctrl.css.labelWidth}} control-label" for="userShare1">Sharing Options</label>
+                <div class="col-sm-{{ctrl.css.inputWidth}}">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="userShare" id="userShare1" value="shareAll" checked> Everyone
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-offset-{{ctrl.css.labelWidth}} col-sm-{{ctrl.css.inputWidth}}" ng-if="ctrl.isUserOrg">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="userShare" id="userShare2" value="shareOrg"> My organization
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-offset-{{ctrl.css.labelWidth}} col-sm-{{ctrl.css.inputWidth}}">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="userShare" id="userShare1" value="shareNone"> No one
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <!-- Form Actions -->
+            <div class="form-group ">
+                <div class="col-sm-offset-{{ctrl.css.labelWidth}} col-sm-{{ctrl.css.inputWidth}}">
+                    <input type="submit " class="btn btn-primary" ng-click="" value="Submit">
+                    <input type="button " class="btn btn-default" ng-click="" value="Reset">
+                </div>
+            </div>
+        </form>

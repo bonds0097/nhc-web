@@ -1,0 +1,32 @@
+<h1>Sign Up</h1>
+<div class="row">
+    <div class="col-md-9">
+        <!-- <nhc-alert></nhc-alert> -->
+        <p>Before you can register for the Nutrition Habit Challenge, you need to create a user account using an existing social media account or you e-mail address. We will <strong>never</strong> post to your social media account without asking.</p>
+
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-4 col-md-offset-2">
+        <p>
+            <a class="btn btn-block btn-social btn-facebook" ng-click="ctrl.authenticate('facebook')">
+                <span class="fa fa-facebook"></span> Sign up with Facebook
+            </a>
+        </p>
+        <p>
+            <a class="btn btn-block btn-social btn-google" ng-click="ctrl.authenticate('google')">
+                <span class="fa fa-google"></span> Sign up with Google
+            </a>
+        </p>
+        <div class="groupSeparator">
+            <p class="text-center">OR</p>
+        </div>
+        <p>
+            <a class="btn btn-block btn-social btn-email" ng-click="ctrl.signupEmailModal()">
+                <span class="fa fa-envelope"></span>Sign up with E-Mail
+            </a>
+        </p>
+    </div>
+</div>
+</div>

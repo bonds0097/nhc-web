@@ -1,0 +1,27 @@
+<div class="modal-header">
+  <h4>Sign Up with E-Mail</h4>
+</div>
+<div class="modal-body">
+    <form name="ctrl.form" novalidate>
+        <!-- Contact Details -->
+        <div class="form-group">
+            <label for="userFirstName" class="sr-only">First Name</label>
+            <input type="text" class="form-control" id="userFirstName" placeholder="First Name" ng-model="ctrl.user.firstName" required>
+        </div>
+        <div class="form-group">
+            <label for="userLastName" class="sr-only">Last Name</label>
+            <input type="text" class="form-control" id="userLastName" placeholder="Last Name" ng-model="ctrl.user.lastName" required>
+        </div>
+        <div class="form-group">
+            <label for="userEmail" class="sr-only">E-Mail Address</label>
+            <input type="email" class="form-control" id="userEmail" placeholder="E-Mail Address" ng-model="ctrl.user.email" required>
+        </div>
+        <div class="form-group">
+            <label for="userPassword" class="sr-only">Password</label>
+            <input type="password" class="form-control" id="userPassword" placeholder="Create a Password" ng-model="ctrl.user.password" required>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-block" ng-click="ctrl.signup()" ng-disabled="ctrl.form.$invalid" value="Sign Up">
+        </div>
+    </form>
+</div>
