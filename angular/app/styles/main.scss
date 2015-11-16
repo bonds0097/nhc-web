@@ -70,7 +70,6 @@ header {
 
 .navbar {
     margin-bottom: 0px;
-    padding-top: 45px;
 }
 
 nav {
@@ -217,6 +216,56 @@ fieldset[disabled] .btn-email.active {
 .btn-email .badge {
     color: #009999;
     background-color: #fff
+}
+
+.landing-options {
+    padding-top: 70px;
+}
+
+.btn-landing {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.btn-landing-notcentre {
+    color: #fff;
+    background-color: #b3b3b3;
+    border-color: rgba(0, 0, 0, 0.2)
+}
+
+.btn-landing-notcentre:hover,
+.btn-landing-notcentre:focus,
+.btn-landing-notcentre:active,
+.btn-landing-notcentre.active,
+.open>.dropdown-toggle.btn-landing-notcentre {
+    color: #fff;
+    background-color: #808080;
+    border-color: rgba(0, 0, 0, 0.2)
+}
+
+.btn-landing-notcentre:active,
+.btn-landing-notcentre.active,
+.open>.dropdown-toggle.btn-landing-notcentre {
+    background-image: none
+}
+
+.btn-landing-notcentre.disabled,
+.btn-landing-notcentre[disabled],
+fieldset[disabled] .btn-landing-notcentre,
+.btn-landing-notcentre.disabled:hover,
+.btn-landing-notcentre[disabled]:hover,
+fieldset[disabled] .btn-landing-notcentre:hover,
+.btn-landing-notcentre.disabled:focus,
+.btn-landing-notcentre[disabled]:focus,
+fieldset[disabled] .btn-landing-notcentre:focus,
+.btn-landing-notcentre.disabled:active,
+.btn-landing-notcentre[disabled]:active,
+fieldset[disabled] .btn-landing-notcentre:active,
+.btn-landing-notcentre.disabled.active,
+.btn-landing-notcentre[disabled].active,
+fieldset[disabled] .btn-landing-notcentre.active {
+    background-color: #b3b3b3;
+    border-color: rgba(0, 0, 0, 0.2)
 }
 
 .nav,

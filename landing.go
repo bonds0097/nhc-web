@@ -52,5 +52,5 @@ func notCentreLandingHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func notCentreServeHandler(w http.ResponseWriter, r *http.Request) {
-	http.Redirect(w, r, "https://www.google.com/", http.StatusMovedPermanently)
+	http.Redirect(w, r, "http://www.psahperd.org/PA-Nutrition-Challenge-2016", http.StatusMovedPermanently)
 }

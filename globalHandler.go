@@ -11,6 +11,9 @@ func globalHandler(fn func(http.ResponseWriter, *http.Request)) http.HandlerFunc
 		w.Header().Set("Pragma", "no-cache")
 		w.Header().Set("Expires", "0")
 
+		// Protect against clickjacking.
+		w.Header().Set("X-Frame-Options", "SAMEORIGIN")
+
 		// If HTTPS is enabled, set the HSTS header.
 		if enableHTTPS {
 			w.Header().Set("Strict-Transport-Security", "max-age=31536000; includeSubDomains")
