@@ -43,7 +43,9 @@ func main() {
 	if environment == "prod" {
 		rootDir = appSettings.Prod["root_dir"]
 		url = appSettings.Prod["url"]
-
+	} else if environment == "test" {
+		rootDir = appSettings.Prod["root_dir"]
+		url = appSettings.Prod["url"]
 	} else if environment == "dev" {
 		rootDir = appSettings.Dev["root_dir"]
 		url = appSettings.Dev["url"]
@@ -59,7 +61,7 @@ func main() {
 	setLandingHandlers()
 
 	// Start the servers based on whether or not HTTPS is enabled.
-	if environment == "prod" && enableHTTPS {
+	if (environment == "prod" || environment == "test") && enableHTTPS {
 		log.Println("HTTPS is enabled.")
 		go func() {
 			err := http.ListenAndServe(":8080", http.RedirectHandler("https://"+url, http.StatusMovedPermanently))
