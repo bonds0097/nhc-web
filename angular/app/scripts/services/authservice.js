@@ -8,6 +8,6 @@
  * Factory in the nhcWebApp.
  */
 angular.module('nhcWebApp')
-    .factory('AuthService', ['$resource', function($resource) {
-        return $resource('http://localhost:4433/auth/', null);
+    .factory('AuthService', ['$resource', 'API', function($resource, API) {
+        return $resource(API.baseUrl + '/auth/', null);
     }]);

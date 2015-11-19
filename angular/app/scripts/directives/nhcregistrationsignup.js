@@ -7,11 +7,13 @@
  * # nhcRegistrationSignup
  */
 angular.module('nhcWebApp')
-  .directive('nhcRegistrationSignup', function () {
-    return {
-      templateUrl: 'views/registrationsignup.html',
-      restrict: 'E',
-      controller: 'RegistrationSignupCtrl',
-      controllerAs: 'ctrl'
-    };
-  });
+    .directive('nhcRegistrationSignup', function() {
+        return {
+            templateUrl: 'views/registrationsignup.html',
+            restrict: 'E',
+            controller: 'RegistrationSignupCtrl',
+            controllerAs: 'ctrl',
+            scope: {},
+            bindToController: true
+        };
+    });

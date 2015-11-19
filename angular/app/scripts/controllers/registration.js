@@ -10,12 +10,5 @@
 angular.module('nhcWebApp')
     .controller('RegistrationCtrl', ['UserService', function(UserService) {
         var self = this;
-
-        self.User = UserService;
-
-        this.awesomeThings = [
-            'HTML5 Boilerplate',
-            'AngularJS',
-            'Karma'
-        ];
+        self.user = UserService;
     }]);

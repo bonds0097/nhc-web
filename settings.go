@@ -14,7 +14,7 @@ type Settings struct {
 
 func loadSettings() (settings Settings) {
 	// Open settings file.
-	settingsFile, err := os.Open("./settings/web_env.json")
+	settingsFile, err := os.Open(settingsLocation)
 	if err != nil {
 		log.Fatalf("Error opening settings file: %s\n", err)
 	}

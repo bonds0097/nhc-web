@@ -10,6 +10,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(app/..) styles/vendor.css -->
     <!-- <link rel="stylesheet" href="styles/vendor/bootstrap.css"> -->
+    <link rel="stylesheet" href="styles/vendor/spinners.css">
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css" />
@@ -21,7 +22,19 @@
 </head>
 
 <body class="gray pattern-1" ng-app="nhcWebApp">
-    <nav class="navbar navbar-default navbar-static-top">
+    <header ng-controller="LoginCtrl as ctrl">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-offset-10 col-md-2">
+                    <div ng-if="ctrl.user.isAuthenticated()">
+                        <p class="text-right" ng-cloak>Hi {{ctrl.user.currentUser().firstName}}!</p>
+                        <!-- <img src="{{ctrl.user.currentUser().picture}}" class="img-responsive center-block" alt=""> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav ng-controller="NavCtrl as ctrl" class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -35,8 +48,9 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="clearfix nav navbar-nav">
                     <li><a href="/">Welcome</a></li>
+                    <li ng-if="ctrl.user.currentUser().status === 'registered'"><a href="/dashboard">Dashboard</a></li>
                     <li><a href="/how-it-works">How It Works</a></li>
-                    <li><a href="/registration">Registration</a></li>
+                    <li ng-if="ctrl.user.currentUser().status !== 'registered'"><a href="/registration">Registration</a></li>
                     <li><a href="/prizes-and-sponsors">Prizes and Sponsors</a></li>
                     <li><a href="/resources">Resources</a></li>
                     <li><a href="/about-us">About Us</a></li>
@@ -48,22 +62,23 @@
         <div ng-view></div>
     </div>
     <div class="container">
-    <!-- Social Media Icons -->
-    <div class="row">
-        <div class="col-md-12 page-footer">
-        <div class="social-icons text-center">
-        <ul class="list-inline center-block">
-            <li><a href="https://www.facebook.com/1on1NHC2015"><img src="img/sm_fb_logo.png" alt="Facebook"></a></li>
-            <li><img src="img/sm_twitter_logo.png" alt="Twitter"></li>
-            <li><img src="img/sm_instagram_logo.png" alt="Instagram"></li>
-            <li><img src="img/sm_pin_logo.png" alt="Pinterest"></li>
-        </ul>
+        <!-- Social Media Icons -->
+        <div class="row">
+            <div class="col-md-12 page-footer">
+                <div class="social-icons text-center">
+                    <ul class="list-inline center-block">
+                        <li>
+                            <a href="https://www.facebook.com/1on1NHC2015"><img src="img/sm_fb_logo.png" alt="Facebook"></a>
+                        </li>
+                        <li><img src="img/sm_twitter_logo.png" alt="Twitter"></li>
+                        <li><img src="img/sm_instagram_logo.png" alt="Instagram"></li>
+                        <li><img src="img/sm_pin_logo.png" alt="Pinterest"></li>
+                    </ul>
+                </div>
+                <p class="text-center"><strong>Email us at: <a href="mailto:NHC@oneononefit.com" target="_blank">NHC@oneononefit.com</a></strong></p>
+                <p class="text-center"><small>Copyright&copy; 2015 Nutrition Habit Challenge. All rights reserved.</small></p>
+            </div>
         </div>
-        <p class="text-center"><strong>Email us at: <a href="mailto:NHC@oneononefit.com" target="_blank">NHC@oneononefit.com</a></strong></p>
-        <p class="text-center"><small>Copyright&copy; 2015 Nutrition Habit Challenge. All rights reserved.</small></p>
-        </div>
-    </div>
-
     </div>
     <!-- build:js(.) scripts/oldieshim.js -->
     <!--[if lt IE 9]>
@@ -104,6 +119,13 @@
     <script src="scripts/directives/nhcalert.js"></script>
     <script src="scripts/services/alertservice.js"></script>
     <script src="scripts/controllers/alert.js"></script>
+    <script src="scripts/services/authservice.js"></script>
+    <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/services/commitments.js"></script>
+    <script src="scripts/directives/nhcloading.js"></script>
+    <script src="scripts/services/registration.js"></script>
+    <script src="scripts/services/api.js"></script>
+    <script src="scripts/controllers/nav.js"></script>
     <!-- endbuild -->
 </body>
 

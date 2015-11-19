@@ -229,7 +229,7 @@ fieldset[disabled] .btn-email.active {
 
 .btn-landing-notcentre {
     color: #fff;
-    background-color: #b3b3b3;
+    background-color: #333333;
     border-color: rgba(0, 0, 0, 0.2)
 }
 
@@ -239,7 +239,7 @@ fieldset[disabled] .btn-email.active {
 .btn-landing-notcentre.active,
 .open>.dropdown-toggle.btn-landing-notcentre {
     color: #fff;
-    background-color: #808080;
+    background-color: #1a1a1a;
     border-color: rgba(0, 0, 0, 0.2)
 }
 
@@ -264,13 +264,75 @@ fieldset[disabled] .btn-landing-notcentre:active,
 .btn-landing-notcentre.disabled.active,
 .btn-landing-notcentre[disabled].active,
 fieldset[disabled] .btn-landing-notcentre.active {
-    background-color: #b3b3b3;
+    background-color: #333333;
     border-color: rgba(0, 0, 0, 0.2)
+}
+
+.loading-content {
+    padding-top: 70px;
+}
+
+.loading-content h2 {
+    margin-bottom: 25px;
+}
+
+.form-info {
+    color: #2a58bb;
+    font-size: 110%;
+}
+
+.form-info:hover {
+    color: #1c3b7d;
+}
+
+.form-info:active {
+    background-color: #1c3b7d;
+}
+
+.form-add {
+    color: #5cb85c;
+    font-size: 150%;
+}
+
+.form-add:hover {
+    color: #3e8e3e;
+}
+
+.form-add:active {
+    background-color: #3e8e3e;
+}
+
+.form-sub {
+    color: #d9534f;
+    font-size: 150%;
+}
+
+.form-sub:hover {
+    color: #bd2d29;
+}
+
+.form-sub:active {
+    color: #bd2d29;
+}
+
+.form-help {
+    cursor: help;
+}
+
+.form-addon:active {
+    color: transparent;
+    text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.3);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
 }
 
 .nav,
 .pagination,
 .carousel,
+.form-info,
+.form-add,
+.form-sub,
 .panel-title a {
     cursor: pointer;
 }

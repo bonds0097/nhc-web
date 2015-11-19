@@ -8,11 +8,12 @@ import (
 )
 
 var (
-	appSettings Settings
-	environment string
-	rootDir     string
-	url         string
-	enableHTTPS bool
+	appSettings      Settings
+	settingsLocation string
+	environment      string
+	rootDir          string
+	url              string
+	enableHTTPS      bool
 )
 
 func setStaticHandlers() {
@@ -33,6 +34,7 @@ func setStaticHandlers() {
 
 func init() {
 	flag.StringVar(&environment, "env", "prod", "Environment in which application is running.")
+	flag.StringVar(&settingsLocation, "settings", "/etc/nhc-web/settings.json", "Location of application settings file.")
 	flag.Parse()
 }
 
@@ -60,19 +62,19 @@ func main() {
 	if environment == "prod" && enableHTTPS {
 		log.Println("HTTPS is enabled.")
 		go func() {
-			err := http.ListenAndServe(":80", http.RedirectHandler("https://"+url, http.StatusMovedPermanently))
+			err := http.ListenAndServe(":8080", http.RedirectHandler("https://"+url, http.StatusMovedPermanently))
 			if err != nil {
 				log.Fatalf("HTTP Error: %s", err)
 			}
 		}()
 
-		err := http.ListenAndServeTLS(":443", "/var/private/nhc_cert.pem", "/var/private/nhc_key.pem", nil)
+		err := http.ListenAndServeTLS(":8443", "/var/private/nhc_cert.pem", "/var/private/nhc_key.pem", nil)
 		if err != nil {
 			log.Fatalf("HTTPS Error: %s\n", err)
 		}
 	} else {
 		log.Println("HTTPS is not enabled.")
-		err := http.ListenAndServe(":80", nil)
+		err := http.ListenAndServe(":8080", nil)
 		if err != nil {
 			log.Fatalf("HTTPS Error: %s\n", err)
 		}

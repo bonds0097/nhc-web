@@ -8,16 +8,13 @@
  * Factory in the nhcWebApp.
  */
 angular.module('nhcWebApp')
-  .factory('Organizations', function () {
-    // Service logic
-    // ...
-
-    var meaningOfLife = 42;
-
-    // Public API here
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
-    };
-  });
+    .factory('Organizations', ['$resource', 'API', function($resource, API) {
+        return $resource(API.baseUrl + '/api/organizations', null, {
+            get: {
+                method: 'GET',
+                url: API.baseUrl + '/api/organizations',
+                isArray: true,
+                cache: true
+            }
+        });
+    }]);

@@ -17,7 +17,6 @@ angular.module('nhcWebApp')
         };
 
         var refreshUser = function() {
-            console.log('Function called.');
             if (!$auth.isAuthenticated()) {
                 currentUser = {
                     status: 'unauthed'

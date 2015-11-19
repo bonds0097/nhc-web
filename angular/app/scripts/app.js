@@ -19,6 +19,9 @@ angular
         'ngLodash',
         'satellizer'
     ])
+    .constant('AUTH_EVENTS', {
+        authStatusChanged: 'auth-status-changed'
+    })
     .config(['$routeProvider', '$locationProvider', '$resourceProvider', '$httpProvider',
         '$authProvider',
         function($routeProvider, $locationProvider, $resourceProvider, $httpProvider,
@@ -27,22 +30,22 @@ angular
                 .when('/', {
                     templateUrl: 'views/main.html',
                     controller: 'MainCtrl',
-                    controllerAs: 'main'
+                    controllerAs: 'ctrl'
                 })
                 .when('/about', {
                     templateUrl: 'views/about.html',
                     controller: 'AboutCtrl',
-                    controllerAs: 'about'
+                    controllerAs: 'ctrl'
                 })
                 .when('/how-it-works', {
                     templateUrl: 'views/how-it-works.html',
                     controller: 'HowItWorksCtrl',
-                    controllerAs: 'howItWorks'
+                    controllerAs: 'ctrl'
                 })
                 .when('/resources', {
                     templateUrl: 'views/resources.html',
                     controller: 'ResourcesCtrl',
-                    controllerAs: 'resources'
+                    controllerAs: 'ctrl'
                 })
                 .when('/registration', {
                     templateUrl: 'views/registration.html',
@@ -52,12 +55,12 @@ angular
                 .when('/prizes-and-sponsors', {
                     templateUrl: 'views/prizes-and-sponsors.html',
                     controller: 'PrizesAndSponsorsCtrl',
-                    controllerAs: 'prizesAndSponsors'
+                    controllerAs: 'ctrl'
                 })
                 .when('/about-us', {
                     templateUrl: 'views/about-us.html',
                     controller: 'AboutUsCtrl',
-                    controllerAs: 'aboutUs'
+                    controllerAs: 'ctrl'
                 })
                 .otherwise({
                     redirectTo: '/'
@@ -70,8 +73,8 @@ angular
             $locationProvider.html5Mode(true);
 
             // General config for authProvider.
-            $authProvider.loginUrl = 'http://localhost:4433/auth/login';
-            $authProvider.signupUrl = 'http://localhost:4433/auth/signup';
+            $authProvider.loginUrl = '//' + window.location.hostname + ':4433/auth/login';
+            $authProvider.signupUrl = '//' + window.location.hostname + ':4433/auth/signup';
             $authProvider.tokenPrefix = 'nhc';
 
             // Facebook Configuration
@@ -80,13 +83,13 @@ angular
             });
             $authProvider.facebook({
                 name: 'facebook',
-                url: 'http://localhost:4433/auth/facebook',
+                url: '//' + window.location.hostname + ':4433/auth/facebook',
                 authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
                 redirectUri: window.location.origin + '/',
                 requiredUrlParams: ['display', 'scope'],
                 scope: ['email'],
                 scopeDelimiter: ',',
-                display: 'page',
+                display: 'popup',
                 type: '2.5',
                 popupOptions: {
                     width: 580,
@@ -99,7 +102,7 @@ angular
                 clientId: '38895207898-c0ga0u10pfcqm9d6s9graslif2h6j9a5.apps.googleusercontent.com'
             });
             $authProvider.google({
-                url: 'http://localhost:4433/auth/google',
+                url: '//' + window.location.hostname + ':4433/auth/google',
                 authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
                 redirectUri: window.location.origin || window.location.protocol + '//' + window.location.host,
                 requiredUrlParams: ['scope'],
@@ -112,18 +115,6 @@ angular
                 popupOptions: {
                     width: 452,
                     height: 633
-                }
-            });
-
-            // Twitter Configuration
-            $authProvider.twitter({
-                url: 'http://localhost:4433/auth/twitter',
-                authorizationEndpoint: 'https://api.twitter.com/oauth/authenticate',
-                redirectUri: window.location.origin || window.location.protocol + '//' + window.location.host,
-                type: '1.0',
-                popupOptions: {
-                    width: 495,
-                    height: 645
                 }
             });
         }
