@@ -9,5 +9,10 @@
  */
 angular.module('nhcWebApp')
     .factory('AuthService', ['$resource', 'API', function($resource, API) {
-        return $resource(API.baseUrl + '/auth/', null);
+        return $resource(API.baseUrl + '/auth/', null, {
+          verify: {
+            method: 'POST',
+            url: API.baseUrl + '/auth/verify'
+          }
+        });
     }]);

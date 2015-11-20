@@ -9,8 +9,8 @@
  */
 angular.module('nhcWebApp')
     .controller('RegistrationFormCtrl', ['UserService', 'AlertService', 'Commitments', 'Registration',
-        'Organizations', 'lodash',
-        function(UserService, AlertService, Commitments, Registration, Organizations, lodash) {
+        'Organizations', 'lodash', '$window',
+        function(UserService, AlertService, Commitments, Registration, Organizations, lodash, $window) {
             var self = this;
 
             self.false = false;
@@ -32,7 +32,7 @@ angular.module('nhcWebApp')
                 '13-18': [13, 18],
                 '19-24': [19, 24],
                 '25-34': [25, 34],
-                '35, 59': [35, 59],
+                '35-59': [35, 59],
                 '60+': [60, 99],
             };
 
@@ -84,6 +84,11 @@ angular.module('nhcWebApp')
                 UserService.currentUser().status = "undefined";
                 registration.$save().then(function() {
                         UserService.refreshUser();
+                        if (self.newRegistration.donation === 'ysb') {
+                            $window.open('http://ccysb.com/?page_id=1197 ', '_blank');
+                        } else if(self.newRegistration.donation === 'cvim') {
+                            $window.open('https://cvim.ejoinme.org/MyPages/CVIMNHC/tabid/524126/Default.aspx', '_blank');
+                        }
                     },
                     function(errResponse) {
                         if (errResponse.status === 500) {

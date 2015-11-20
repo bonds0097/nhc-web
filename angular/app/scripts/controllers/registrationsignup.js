@@ -19,27 +19,25 @@ angular.module('nhcWebApp')
             self.signupEmailModal = function() {
 
                 var modalInstance = $uibModal.open({
-                    templateUrl: '/views/registrationsignupemailmodal.html',
+                    templateUrl: 'views/registrationsignupemailmodal.html',
                     controller: 'RegistrationsignupemailmodalCtrl as ctrl',
                     size: 'sm'
                 });
 
                 modalInstance.result.then(function(user) {
                     $auth.signup(user).then(function(response) {
-                        self.Alerts.addAlert({
-                            message: 'Your account has been created but your e-mail address still needs to be verified. Check you inbox!',
-                            type: 'success'
-                        });
+                        $auth.setToken(response.data.token);
+                        UserService.refreshUser();
                     }, function(error) {
                         if (error.status === 400) {
                             self.Alerts.addAlert({
                                 message: error.data.error,
-                                type: "danger"
+                                type: 'danger'
                             });
                         } else {
                             self.Alerts.addAlert({
                                 message: error.data.error,
-                                type: "warning"
+                                type: 'warning'
                             });
                         }
                     });
