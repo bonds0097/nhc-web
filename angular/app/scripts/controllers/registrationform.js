@@ -9,8 +9,9 @@
  */
 angular.module('nhcWebApp')
     .controller('RegistrationFormCtrl', ['UserService', 'AlertService', 'Commitments', 'Registration',
-        'Organizations', 'lodash', '$window',
-        function(UserService, AlertService, Commitments, Registration, Organizations, lodash, $window) {
+        'Organizations', 'lodash', '$window', '$uibModal',
+        function(UserService, AlertService, Commitments, Registration, Organizations, lodash,
+            $window, $uibModal) {
             var self = this;
 
             self.false = false;
@@ -59,6 +60,18 @@ angular.module('nhcWebApp')
                 }
             };
 
+            self.categoryResources = function(urls) {
+                $uibModal.open({
+                    controller: 'UrlsmodalCtrl as ctrl',
+                    resolve: {
+                        urls: function() {
+                            return urls;
+                        }
+                    },
+                    templateUrl: 'views/urlsmodal.html'
+                });
+            };
+
             self.clearOrganization = function(bool) {
                 if (!bool) {
                     self.newRegistration.organization = null;
@@ -66,7 +79,6 @@ angular.module('nhcWebApp')
             };
 
             self.setCategory = function(index, category) {
-                console.log(index, category);
                 self.newRegistration.participants[index].category = category.name;
             };
 
@@ -76,7 +88,7 @@ angular.module('nhcWebApp')
                     if (participant.category === 'Other' || participant.commitment === 'Other') {
                         self.newRegistration.customCommitment = true;
                         self.newRegistration.participants[index].commitment = self.customCommitment;
-                     }
+                    }
                 });
 
                 var registration = new Registration(newRegistration);
@@ -86,7 +98,7 @@ angular.module('nhcWebApp')
                         UserService.refreshUser();
                         if (self.newRegistration.donation === 'ysb') {
                             $window.open('http://ccysb.com/?page_id=1197 ', '_blank');
-                        } else if(self.newRegistration.donation === 'cvim') {
+                        } else if (self.newRegistration.donation === 'cvim') {
                             $window.open('https://cvim.ejoinme.org/MyPages/CVIMNHC/tabid/524126/Default.aspx', '_blank');
                         }
                     },

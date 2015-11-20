@@ -110,7 +110,7 @@
                 </select>
             </div>
             <div class="col-sm-{{ctrl.css.addonWidth}}">
-                <p class="form-control-static"><span class="fa fa-info-circle form-info form-addon" ng-if="participant.selectedCategory.urls"></span></p>
+                <p class="form-control-static"><span class="fa fa-info-circle form-info form-addon" ng-if="participant.selectedCategory.urls" ng-click="ctrl.categoryResources(participant.selectedCategory.urls)"></span></p>
             </div>
         </div>
         <div class="form-group" ng-if="participant.category !== 'Other'">
