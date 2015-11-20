@@ -48,6 +48,24 @@ angular.module('nhcWebApp')
                 UserService.currentUser().status = "undefined";
                 $auth.authenticate(provider).then(function() {
                     UserService.refreshUser();
+                }, function(errResponse) {
+                    UserService.currentUser().status = "unauthed";
+                    if (errResponse.status === 400 || errResponse.status === 409) {
+                        self.Alerts.addAlert({
+                            message: errResponse.data.error,
+                            type: 'danger'
+                        });
+                    } else if (errResponse.status === 500) {
+                        self.Alerts.addAlert({
+                            message: 'Uh oh. Looks like something went wrong on our side. Please try again later.',
+                            type: 'danger'
+                        });
+                    } else {
+                        self.Alerts.addAlert({
+                            message: errResponse.data.error,
+                            type: 'warning'
+                        });
+                    }
                 });
             };
         }

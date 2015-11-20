@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="form-group" ng-if="ctrl.newRegistration.family">
-        <label for="userOrganization" class="col-sm-{{ctrl.css.labelWidth}} control-label">Family Code <span class="fa fa-question-circle form-help"></span></label>
+        <label for="userOrganization" class="col-sm-{{ctrl.css.labelWidth}} control-label">Family Code <span class="fa fa-question-circle form-help" uib-tooltip="If someone shared a Family Code with you, enter it here. Otherwise, leave this blank." tooltip-append-to-body="true" tooltip-close-popup-delay="1" tooltip-placement="right"></span></label>
         <div class="col-sm-{{ctrl.css.inputWidth}}">
             <input type="text" ng-model="ctrl.newRegistration.familyCode">
         </div>
@@ -44,7 +44,7 @@
     </div>
     <!-- Privacy Settings -->
     <div class="form-group">
-        <label class="col-sm-{{ctrl.css.labelWidth}} control-label" for="userShare">Sharing Options <span class="fa fa-question-circle form-help"></span></label>
+        <label class="col-sm-{{ctrl.css.labelWidth}} control-label" for="userShare">Sharing Options <span class="fa fa-question-circle form-help" uib-tooltip="Who do you want to be able to see your name, commitment and points?" tooltip-append-to-body="true" tooltip-close-popup-delay="1" tooltip-placement="right"></span></label>
         <div class="col-sm-{{ctrl.css.inputWidth}}">
             <div class="radio">
                 <label>
@@ -138,7 +138,7 @@
     </div>
     <!-- Donation -->
     <div class="form-group">
-        <label class="col-sm-{{ctrl.css.labelWidth}} control-label" for="userDonation">Optional Donation <span class="fa fa-question-circle form-help"></span></label>
+        <label class="col-sm-{{ctrl.css.labelWidth}} control-label" for="userDonation">Optional Donation <span class="fa fa-question-circle form-help" uib-tooltip="Would you like to support one of our awesome local charities?" tooltip-append-to-body="true" tooltip-close-popup-delay="1" tooltip-placement="right"></span></label>
         <div class="col-sm-{{ctrl.css.inputWidth}}">
             <div class="radio">
                 <label>
