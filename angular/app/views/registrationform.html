@@ -122,7 +122,7 @@
             </div>
         </div>
         <div class="form-group" ng-if="participant.category === 'Other' || participant.commitment === 'Other'">
-            <label for="userCustomCommit" class="col-sm-{{ctrl.css.labelWidth}} control-label">Custom Commitment <span class="fa fa-question-circle form-help"></span></label>
+            <label for="userCustomCommit" class="col-sm-{{ctrl.css.labelWidth}} control-label">Custom Commitment <span class="fa fa-question-circle form-help" uib-tooltip="Your commitment must be specific and measurable. Custom commitments require approval from a site Administrator. You will be notified via email when that happens once your registration is submitted." tooltip-append-to-body="true" tooltip-close-popup-delay="1" tooltip-placement="right"></span></label>
             <div class="col-sm-{{ctrl.css.inputWidth}}">
                 <input type="text" name="userCustomCommit" id="userCustomCommit" class="form-control" ng-model="ctrl.customCommitment" ng-required="participant.category === 'Other' || participant.commitment === 'Other'">
             </div>
