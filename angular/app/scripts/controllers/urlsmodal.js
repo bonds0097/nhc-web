@@ -8,7 +8,7 @@
  * Controller of the nhcWebApp
  */
 angular.module('nhcWebApp')
-  .controller('UrlsmodalCtrl', ['urls', function (urls) {
+  .controller('UrlsmodalCtrl', ['links', function (links) {
     var self = this;
-    self.urls = urls;
+    self.links = links;
   }]);

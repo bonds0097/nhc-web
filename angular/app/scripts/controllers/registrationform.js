@@ -60,12 +60,12 @@ angular.module('nhcWebApp')
                 }
             };
 
-            self.categoryResources = function(urls) {
+            self.categoryResources = function(links) {
                 $uibModal.open({
                     controller: 'UrlsmodalCtrl as ctrl',
                     resolve: {
-                        urls: function() {
-                            return urls;
+                        links: function() {
+                            return links;
                         }
                     },
                     templateUrl: 'views/urlsmodal.html'
