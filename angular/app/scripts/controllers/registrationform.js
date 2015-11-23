@@ -103,12 +103,18 @@ angular.module('nhcWebApp')
                         }
                     },
                     function(errResponse) {
-                        if (errResponse.status === 500) {
+
+                         if (errResponse.status === 500) {
                             self.Alerts.addAlert({
-                                message: "Something went wrong with registration. Please try again later.",
+                                message: "Uh oh. Something went wrong on our end. Please try again.",
                                 type: "danger"
                             });
-                        }
+                        } else {
+                           self.Alerts.addAlert({
+                                message: errResponse.data.error,
+                                type: "danger"
+                            });
+                       }
                     });
             };
 
