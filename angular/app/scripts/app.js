@@ -17,7 +17,9 @@ angular
         'ngTouch',
         'ui.bootstrap',
         'ngLodash',
-        'satellizer'
+        'satellizer',
+        'angulartics',
+        'angulartics.google.analytics'
     ])
     .constant('AUTH_EVENTS', {
         authStatusChanged: 'auth-status-changed'
@@ -63,14 +65,14 @@ angular
                     controllerAs: 'ctrl'
                 })
                 .when('/dashboard', {
-                  templateUrl: 'views/dashboard.html',
-                  controller: 'DashboardCtrl',
-                  controllerAs: 'ctrl'
+                    templateUrl: 'views/dashboard.html',
+                    controller: 'DashboardCtrl',
+                    controllerAs: 'ctrl'
                 })
                 .when('/verify/:code', {
-                  templateUrl: 'views/verify.html',
-                  controller: 'VerifyCtrl',
-                  controllerAs: 'ctrl'
+                    templateUrl: 'views/verify.html',
+                    controller: 'VerifyCtrl',
+                    controllerAs: 'ctrl'
                 })
                 .otherwise({
                     redirectTo: '/'
