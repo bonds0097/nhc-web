@@ -8,10 +8,7 @@
  * Controller of the nhcWebApp
  */
 angular.module('nhcWebApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('MainCtrl', ['Resources', function (Resources) {
+    var self = this;
+    self.resources = Resources.get();
+  }]);
