@@ -19,7 +19,8 @@ angular
         'ngLodash',
         'satellizer',
         'angulartics',
-        'angulartics.google.analytics'
+        'angulartics.google.analytics',
+        'ngMessages'
     ])
     .constant('AUTH_EVENTS', {
         authStatusChanged: 'auth-status-changed'

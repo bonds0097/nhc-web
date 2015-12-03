@@ -5,43 +5,45 @@
 <form name="ctrl.form" class="form-horizontal" novalidate>
     <!-- Family/Individual Selection -->
     <div class="form-group">
-        <label class="col-sm-{{ctrl.css.labelWidth}} control-label" for="userFamily">I am registering as</label>
+        <label class="col-sm-{{ctrl.css.labelWidth}} control-label" for="family">I am registering as</label>
         <div class="col-sm-{{ctrl.css.inputWidth}}">
             <div class="radio">
                 <label>
-                    <input type="radio" ng-model="ctrl.newRegistration.family" name="userFamily" id="userFamily1" ng-value="ctrl.false" ng-change="ctrl.trimParticipants(ctrl.newRegistration.family)" checked required> an individual
+                    <input type="radio" ng-model="ctrl.newRegistration.family" name="family" id="userFamily1" ng-value="ctrl.false" ng-change="ctrl.trimParticipants(ctrl.newRegistration.family)" checked required> an individual
                 </label>
             </div>
         </div>
         <div class="col-sm-offset-{{ctrl.css.labelWidth}} col-sm-{{ctrl.css.inputWidth}}">
             <div class="radio">
                 <label>
-                    <input type="radio" ng-model="ctrl.newRegistration.family" name="userFamily" id="userFamily2" ng-value="ctrl.true" required> a family
+                    <input type="radio" ng-model="ctrl.newRegistration.family" name="family" id="userFamily2" ng-value="ctrl.true" required> a family
                 </label>
             </div>
         </div>
     </div>
     <div class="form-group" ng-if="ctrl.newRegistration.family">
-        <label for="userOrganization" class="col-sm-{{ctrl.css.labelWidth}} control-label">Family Code <span class="fa fa-question-circle form-help" uib-tooltip="If someone shared a Family Code with you, enter it here. Otherwise, leave this blank." tooltip-append-to-body="true" tooltip-close-popup-delay="1" tooltip-placement="right"></span></label>
+        <label for="familyCode" class="col-sm-{{ctrl.css.labelWidth}} control-label">Family Code <span class="fa fa-question-circle form-help" uib-tooltip="If someone shared a Family Code with you, enter it here. Otherwise, leave this blank." tooltip-append-to-body="true" tooltip-close-popup-delay="1" tooltip-placement="right"></span></label>
         <div class="col-sm-{{ctrl.css.inputWidth}}">
-            <input type="text" ng-model="ctrl.newRegistration.familyCode">
+            <input type="text" name="familyCode" id="familyCode" ng-model="ctrl.newRegistration.familyCode">
         </div>
     </div>
     <!-- Organization -->
     <div class="form-group">
-        <label for="userOrganization" class="col-sm-{{ctrl.css.labelWidth}} control-label">Organization</label>
+        <label for="organization" class="col-sm-{{ctrl.css.labelWidth}} control-label">Organization</label>
         <div class=" col-sm-{{ctrl.css.inputWidth}}">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" ng-model="ctrl.isUserOrg" ng-change="ctrl.clearOrganization(ctr.isUserOrg)"> I am joining as part of a group or organization
+                    <input type="checkbox" ng-model="ctrl.newRegistration.isUserOrg" ng-change="ctrl.clearOrganization(ctrl.newRegistration.isUserOrg)"> I am joining as part of a group or organization
                 </label>
             </div>
         </div>
     </div>
-    <div class="form-group" ng-if="ctrl.isUserOrg">
+    <div class="form-group" ng-if="ctrl.newRegistration.isUserOrg" ng-class="{'has-error': (ctrl.form.organization.$touched && ctrl.form.organization.$invalid) || ctrl.serverErrors.organization}">
         <div class="col-sm-offset-{{ctrl.css.labelWidth}} col-sm-{{ctrl.css.inputWidth}}">
-            <input type="text" ng-model="ctrl.newRegistration.organization" class="form-control" id="userOrganization" placeholder="Acme Co." ng-required="ctrl.isUserOrg" uib-typeahead="organization.name as organization.name for organization in ctrl.organizations | filter:$viewValue | limitTo:8">
+            <input type="text" ng-model="ctrl.newRegistration.organization" class="form-control" id="organization" name="organization" placeholder="Acme Co." ng-required="ctrl.newRegistration.isUserOrg" uib-typeahead="organization.name as organization.name for organization in ctrl.organizations | filter:$viewValue | limitTo:8" autocomplete="off">
+            <span class="help-block has-error" ng-show="ctrl.serverErrors.organization"><span ng-repeat="error in ctrl.serverErrors.organization">{{error}}</span></span>
         </div>
+
     </div>
     <!-- Privacy Settings -->
     <div class="form-group">
@@ -53,7 +55,7 @@
                 </label>
             </div>
         </div>
-        <div class="col-sm-offset-{{ctrl.css.labelWidth}} col-sm-{{ctrl.css.inputWidth}}" ng-if="ctrl.isUserOrg">
+        <div class="col-sm-offset-{{ctrl.css.labelWidth}} col-sm-{{ctrl.css.inputWidth}}" ng-if="ctrl.newRegistration.isUserOrg">
             <div class="radio">
                 <label>
                     <input type="radio" ng-model="ctrl.newRegistration.sharing" name="userShare" id="userShare2" value="organization" required> My organization
@@ -165,7 +167,7 @@
     <!-- Form Actions -->
     <div class="form-group ">
         <div class="col-sm-offset-{{ctrl.css.labelWidth}} col-sm-{{ctrl.css.inputWidth}}">
-            <input type="submit" class="btn btn-danger" ng-click="ctrl.sendRegistration(ctrl.newRegistration)" ng-disabled="ctrl.form.$invalid" value="Submit">
+            <input type="submit" class="btn btn-danger" ng-click="ctrl.sendRegistration(ctrl.newRegistration, ctrl.form)" ng-disabled="ctrl.form.$invalid" value="Submit">
             <input type="button" class="btn btn-default" ng-click="ctrl.reset(ctrl.form)" value="Reset">
         </div>
     </div>

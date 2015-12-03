@@ -25,16 +25,23 @@
     <header ng-controller="LoginCtrl as ctrl">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-offset-10 col-md-2">
+                <div class="col-md-offset-9 col-md-3">
                     <div ng-if="ctrl.user.isAuthenticated()">
-                        <p class="text-right" ng-cloak>Hi {{ctrl.user.currentUser().firstName}}!</p>
-                        <!-- <img src="{{ctrl.user.currentUser().picture}}" class="img-responsive center-block" alt=""> -->
+                        <div class="row">
+                            <div class="col-md-10">
+                                <p class="text-right" ng-cloak>Hi {{ctrl.user.currentUser().firstName}}!</p>
+                            </div>
+                            <div class="col-md-2" ng-if="ctrl.user.currentUser().picture">
+                                <img ng-cloak src="{{ctrl.user.currentUser().picture}}" class="img-circle" alt="Profile Picture" height="25px" width="auto">
+                            </div>
+                        </div>
                     </div>
                     <div ng-if="!ctrl.user.isAuthenticated()">
-                        <p class="text-right"><small>Already signed up? </small><a class="btn btn-danger btn-xs btn-social" ng-click="ctrl.loginModal()">
-                <span class="fa fa-sign-in"></span>Sign In
-            </a></p>
-                        <!-- <img src="{{ctrl.user.currentUser().picture}}" class="img-responsive center-block" alt=""> -->
+                        <p class="text-right"><small>Already signed up? </small>
+                            <a class="btn btn-danger btn-xs btn-social" ng-click="ctrl.loginModal()">
+                                <span class="fa fa-sign-in"></span> Sign In
+                            </a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -159,6 +166,9 @@
     <script src="scripts/controllers/verify.js"></script>
     <script src="scripts/controllers/urlsmodal.js"></script>
     <script src="scripts/controllers/loginmodal.js"></script>
+    <script src="scripts/services/registrationdata.js"></script>
+    <script src="scripts/directives/nhcregistrationconfirm.js"></script>
+    <script src="scripts/controllers/nhcregistrationconfirm.js"></script>
     <!-- endbuild -->
     <!-- Google Analytics -->
     <script>

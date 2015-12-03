@@ -9,9 +9,9 @@
  */
 angular.module('nhcWebApp')
     .controller('RegistrationFormCtrl', ['UserService', 'AlertService', 'Commitments', 'Registration',
-        'Organizations', 'lodash', '$window', '$uibModal',
+        'Organizations', 'lodash', '$window', '$uibModal', 'RegistrationData',
         function(UserService, AlertService, Commitments, Registration, Organizations, lodash,
-            $window, $uibModal) {
+            $window, $uibModal, RegistrationData) {
             var self = this;
 
             self.false = false;
@@ -21,6 +21,9 @@ angular.module('nhcWebApp')
             self.Alerts = AlertService;
             self.commCategories = Commitments.get();
             self.organizations = Organizations.get();
+
+            self.newRegistration = RegistrationData.get();
+            self.serverErrors = RegistrationData.errors();
 
             self.css = {
                 labelWidth: '2',
@@ -37,27 +40,17 @@ angular.module('nhcWebApp')
                 '60+': [60, 99],
             };
 
-            function Participant() {
-                this.firstName = null;
-                this.lastName = null;
-                this.ageRange = null;
-                this.category = null;
-                this.commitment = null;
-            }
 
             self.addParticipant = function() {
-                self.newRegistration.participants.push(new Participant());
+                return RegistrationData.addParticipant();
             };
 
             self.deleteParticipant = function(index) {
-                self.newRegistration.participants.splice(index, 1);
+                return RegistrationData.deleteParticipant(index);
             };
 
             self.trimParticipants = function(bool) {
-                if (!bool) {
-                    self.newRegistration.participants
-                        .splice(1, self.newRegistration.participants.length - 1);
-                }
+                return RegistrationData.trimParticipants(bool);
             };
 
             self.categoryResources = function(links) {
@@ -103,18 +96,27 @@ angular.module('nhcWebApp')
                         }
                     },
                     function(errResponse) {
-
-                         if (errResponse.status === 500) {
+                        UserService.currentUser().status = "unregistered";
+                        if (errResponse.status === 400) {
+                            self.Alerts.addAlert({
+                                message: "There were errors with your registration submission. Please review and re-submit.",
+                                type: "danger"
+                            });
+                            // Map errors.
+                            if (errResponse.data.organization) {
+                                self.serverErrors.organization = errResponse.data.organization;
+                            }
+                        } else if (errResponse.status === 500) {
                             self.Alerts.addAlert({
                                 message: "Uh oh. Something went wrong on our end. Please try again.",
                                 type: "danger"
                             });
                         } else {
-                           self.Alerts.addAlert({
+                            self.Alerts.addAlert({
                                 message: errResponse.data.error,
                                 type: "danger"
                             });
-                       }
+                        }
                     });
             };
 
@@ -122,28 +124,9 @@ angular.module('nhcWebApp')
                 if (form) {
                     form.$setPristine();
                     form.$setUntouched();
-
                 }
 
-                self.isUserOrg = true;
-
-                self.newRegistration = {
-                    organization: null,
-                    comment: null,
-                    donation: null,
-                    sharing: null,
-                    participants: [new Participant()],
-                    family: false,
-                    familyCode: null,
-                    customCommitment: false
-                };
-
-                self.newRegistration.participants[0].firstName = self.user.currentUser().firstName;
-                self.newRegistration.participants[0].lastName = self.user.currentUser().lastName;
-
-                self.numParticipants = 1;
+                RegistrationData.reset();
             };
-
-            self.reset();
         }
     ]);
