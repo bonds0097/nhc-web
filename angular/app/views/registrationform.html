@@ -33,14 +33,14 @@
         <div class=" col-sm-{{ctrl.css.inputWidth}}">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" ng-model="ctrl.newRegistration.isUserOrg" ng-change="ctrl.clearOrganization(ctrl.newRegistration.isUserOrg)"> I am joining as part of a group or organization
+                    <input type="checkbox" ng-model="ctrl.newRegistration.isUserOrg" ng-change="ctrl.clearOrganization(ctrl.newRegistration.isUserOrg)"> I am joining as part of a group or organization (please enter below)
                 </label>
             </div>
         </div>
     </div>
     <div class="form-group" ng-if="ctrl.newRegistration.isUserOrg" ng-class="{'has-error': (ctrl.form.organization.$touched && ctrl.form.organization.$invalid) || ctrl.serverErrors.organization}">
         <div class="col-sm-offset-{{ctrl.css.labelWidth}} col-sm-{{ctrl.css.inputWidth}}">
-            <input type="text" ng-model="ctrl.newRegistration.organization" class="form-control" id="organization" name="organization" placeholder="Acme Co." ng-required="ctrl.newRegistration.isUserOrg" uib-typeahead="organization.name as organization.name for organization in ctrl.organizations | filter:$viewValue | limitTo:8" autocomplete="off">
+            <input type="text" ng-model="ctrl.newRegistration.organization" class="form-control" id="organization" name="organization" placeholder="Name of Organization" ng-required="ctrl.newRegistration.isUserOrg" uib-typeahead="organization.name as organization.name for organization in ctrl.organizations | filter:$viewValue | limitTo:8" autocomplete="off">
             <span class="help-block has-error" ng-show="ctrl.serverErrors.organization"><span ng-repeat="error in ctrl.serverErrors.organization">{{error}}</span></span>
         </div>
 
