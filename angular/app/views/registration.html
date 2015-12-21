@@ -18,16 +18,11 @@
             </nhc-registration-signup>
             <div ng-switch-when="unconfirmed">
                 <h1>Account Created</h1>
-                <p>Your account has been created but your e-mail address still needs to be verified. Check your inbox!</p>
+                <p>Your account has been created but your e-mail address still needs to be verified. Check your inbox (including your spam folder)!</p>
             </div>
             <nhc-registration-form ng-switch-when="unregistered">
             </nhc-registration-form>
             <nhc-registration-confirm ng-switch-when="registered"></nhc-registration-confirm>
-            <div ng-switch-when="pending">
-                <h1>Registration Submitted</h1>
-                <p>Your registration was successfully submitted; however, it needs to be approved by an Administrator.</p>
-                <p>You will receive an e-mail when an Administrator has approved your registration.</p>
-            </div>
         </div>
     </div>
 </div>

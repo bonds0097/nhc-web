@@ -1,0 +1,31 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="ctrl.close()"><span class="fa-times fa" aria-hidden="true"></span></button>
+    <h3 class="modal-title">{{ctrl.participant.firstName}}'s Scorecard</h3>
+</div>
+<div class="modal-body">
+    <div class="alert alert-warning" role="alert" ng-if="!ctrl.globals.scorecardEnabled">
+        <span class="fa fa-exclamation-triangle"></span> You can view your scorecard but updating is disabled until the challenge starts on <strong>{{ctrl.globals.challengeStart | date:'longDate'}}</strong>.
+    </div>
+    <p><strong>Commitments: </strong>{{ctrl.participant.commitment}}</p>
+    <p><strong>Instructions: </strong>Check the box for each day that you practice your commitment. If you accumulate 25 points by the end of the Challenge will be eligible for the grand prize drawing.</p>
+    <div class="panel panel-default" ng-repeat="(weekNum, week) in ctrl.participant.scorecard">
+        <div class="panel-heading"><strong>Week {{weekNum + 1}}</strong></div>
+        <table class="table">
+            <tr>
+                <th ng-repeat="(dayNum, day) in week track by $index">{{ctrl.moment(ctrl.globals.challengeStart).clone().add(dayNum + (weekNum * 7), 'days').format('MM/DD')}}</th>
+                <th>Weekly Total</th>
+            </tr>
+            <tr>
+                <td ng-repeat="(dayNum, day) in week track by $index">
+                    <input class="center-block" type="checkbox" ng-model="ctrl.participant.scorecard[weekNum][dayNum]" ng-true-value="1" ng-false-value="0" ng-disabled="!ctrl.globals.scorecardEnabled">
+                </td>
+                <td>{{ctrl.sum(ctrl.participant.scorecard[weekNum])}}</td>
+            </tr>
+        </table>
+    </div>
+    <h4 class="text-right"><strong>Total Score:</strong> {{ctrl.sum(ctrl.flatten(ctrl.participant.scorecard))}}</h4>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-danger" ng-disabled="!ctrl.globals.scorecardEnabled">Apply Changes</button>
+    <button class="btn btn-default" ng-click="ctrl.close()">Cancel</button>
+</div>

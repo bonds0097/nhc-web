@@ -25,6 +25,7 @@ angular
     .constant('AUTH_EVENTS', {
         authStatusChanged: 'auth-status-changed'
     })
+    .constant('Moment', moment)
     .config(['$routeProvider', '$locationProvider', '$resourceProvider', '$httpProvider',
         '$authProvider',
         function($routeProvider, $locationProvider, $resourceProvider, $httpProvider,

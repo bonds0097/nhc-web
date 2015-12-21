@@ -19,7 +19,6 @@ angular.module('nhcWebApp')
             registration.participants = [new Participant()];
             registration.family = false;
             registration.familyCode = null;
-            registration.customCommitment = false;
             registration.isUserOrg = true;
 
             registration.participants[0].firstName = UserService.currentUser().firstName;
@@ -32,6 +31,8 @@ angular.module('nhcWebApp')
             this.ageRange = null;
             this.category = null;
             this.commitment = null;
+            this.custom = null;
+            this.customCommitment = false;
         }
 
         var addParticipant = function() {

@@ -79,8 +79,8 @@ angular.module('nhcWebApp')
                 // Figure out custom commitments.
                 lodash.forEach(self.newRegistration.participants, function(participant, index) {
                     if (participant.category === 'Other' || participant.commitment === 'Other') {
-                        self.newRegistration.customCommitment = true;
-                        self.newRegistration.participants[index].commitment = self.customCommitment;
+                        self.newRegistration.participants[index].customCommitment = true;
+                        self.newRegistration.participants[index].commitment = participant.custom;
                     }
                 });
 
@@ -106,6 +106,8 @@ angular.module('nhcWebApp')
                             if (errResponse.data.organization) {
                                 self.serverErrors.organization = errResponse.data.organization;
                             }
+
+                            // Restore selected category
                         } else if (errResponse.status === 500) {
                             self.Alerts.addAlert({
                                 message: "Uh oh. Something went wrong on our end. Please try again.",

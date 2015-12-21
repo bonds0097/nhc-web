@@ -21,6 +21,7 @@ func setStaticHandlers() {
 	http.Handle("/styles/", http.FileServer(http.Dir(rootDir)))
 	http.Handle("/scripts/", http.FileServer(http.Dir(rootDir)))
 	http.Handle("/img/", http.FileServer(http.Dir(rootDir)))
+	http.Handle("/downloads/", http.FileServer(http.Dir(rootDir)))
 
 	if environment == "prod" || environment == "test" {
 		http.Handle("/bower_components/", http.FileServer(http.Dir(rootDir)))

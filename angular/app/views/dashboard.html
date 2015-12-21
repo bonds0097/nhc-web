@@ -1,13 +1,55 @@
 <div class="row">
-    <div class="col-md-3 sidebar">
+    <div class="col-md-3 sidebar" ng-if="!ctrl.globals.scorecardEnabled">
         <img class="img-responsive center-block" src="img/nhc_logo.jpg" alt="Nutrition Habit Challenge 2016" />
         <blockquote class="blockquote-reverse">
             <p><em>“We all have choices. Each of us needs to take personal responsibility for our health. The Nutrition Habit Challenge is a great opportunity to exercise personal responsibility and model it for the next generation. We hope you will join us."</em></p>
             <p><small>Bruce and Kym Burke</small></p>
         </blockquote>
     </div>
-    <div class="col-md-9">
-    <h1>Coming Soon</h1>
-    <p>The challenge hasn't started yet, check back on <strong>February 1st, 2016</strong> to start tracking your progress!</p>
+    <nhc-leaderboards ng-if="ctrl.globals.scorecardEnabled"></nhc-leaderboards>
+    <div class="col-md-8">
+        <h1>Scorecard<span ng-if="ctrl.participants.length > 1">s</span></h1>
+        <p>Below you can view and update your scorecard<span ng-if="ctrl.participants.length > 1">s</span> in order to track <span ng-if="ctrl.participants.length > 1">you and</span> your <span ng-if="ctrl.participants.length > 1">family's</span> progress during the challenge!</p>
+        <div class="alert alert-warning" role="alert" ng-if="!ctrl.globals.scorecardEnabled">
+            <span class="fa fa-exclamation-triangle"></span> You can view your scorecard but updating is disabled until the challenge starts on <strong>{{ctrl.globals.challengeStart | date:'longDate'}}</strong>.
+        </div>
+        <div class="row">
+            <div class="col-md-offset-2 col-md-4">
+                <p ng-repeat="participant in ctrl.participants">
+                    <a class="btn btn-danger center-block" ng-click="ctrl.openScorecard(participant)">{{participant.firstName}}'s Scorecard</a>
+                </p>
+            </div>
+        </div>
+        <p><small>Want to track your progress on paper as well? <a href="downloads/scorecard.pdf" target="_blank">Download</a> and print the Scorecard PDF!</small></p>
+        <!-- <div>
+            <hr>
+            <h1>Question of the Week</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem eius asperiores sequi saepe numquam sed vel rerum maxime quibusdam officiis? Vero laborum quam itaque nesciunt molestias dolores doloremque nostrum atque.</p>
+            <form>
+                <div class="form-group">
+                    <div class="radio">
+                        <label>
+                            <input type="radio"> Answer 1
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio"> Answer 2
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio"> Answer 3
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-danger btn-sm">Submit Answer</button>
+                    </div>
+                </div>
+            </form>
+            <hr>
+        </div> -->
+        <h1>News &amp; Updates</h1>
+        <p>The challenge hasn't started yet, check back on <strong>February 1st, 2016</strong> to start tracking your progress!</p>
     </div>
 </div>
