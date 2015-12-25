@@ -16,10 +16,7 @@
             <nhc-loading ng-switch-when="undefined"></nhc-loading>
             <nhc-registration-signup ng-switch-when="unauthed">
             </nhc-registration-signup>
-            <div ng-switch-when="unconfirmed">
-                <h1>Account Created</h1>
-                <p>Your account has been created but your e-mail address still needs to be verified. Check your inbox (including your spam folder)!</p>
-            </div>
+            <nhc-signup-verify ng-switch-when="unconfirmed"></nhc-signup-verify>
             <nhc-registration-form ng-switch-when="unregistered">
             </nhc-registration-form>
             <nhc-registration-confirm ng-switch-when="registered"></nhc-registration-confirm>

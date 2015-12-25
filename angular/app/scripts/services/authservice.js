@@ -13,6 +13,10 @@ angular.module('nhcWebApp')
           verify: {
             method: 'POST',
             url: API.baseUrl + '/auth/verify'
+          },
+          resendVerify: {
+            method: 'GET',
+            url: API.baseUrl + '/auth/verify'
           }
         });
     }]);
