@@ -28,11 +28,17 @@
                 <div class="col-md-offset-9 col-md-3">
                     <div ng-if="ctrl.user.isAuthenticated()">
                         <div class="row">
-                            <div class="col-md-10">
-                                <p class="text-right" ng-cloak>Hi {{ctrl.user.currentUser().firstName}}!</p>
-                            </div>
-                            <div class="col-md-2" ng-if="ctrl.user.currentUser().picture">
-                                <img ng-cloak src="{{ctrl.user.currentUser().picture}}" class="img-circle" alt="Profile Picture" height="25px" width="auto">
+                            <div class="col-md-10" ng-cloak>
+                                <span class="pull-right" uib-dropdown dropdown-append-to-body>
+                                <a id="login-button" class="btn btn-social btn-login" uib-dropdown-toggle>
+                                    <span class="fa"><img ng-cloak src="{{ctrl.user.currentUser().picture}}" class="img-circle text-center" alt="Profile Picture" height="25px" width="auto"></span> {{ctrl.user.currentUser().firstName}}
+                                </a>
+                                <ul class="uib-dropdown-menu" role="menu" aria-labelledby="login-button">
+                                    <!-- <li role="menuitem"><a href>Profile</a></li>
+                                    <li class="divider"></li> -->
+                                    <li role="menuitem"><a href ng-click="ctrl.signOut()">Sign Out</a></li>
+                                </ul>
+                                </span>
                             </div>
                         </div>
                     </div>
