@@ -40,6 +40,30 @@ angular.module('nhcWebApp')
                 }
             };
 
+            var isAdmin = function() {
+                if (/admin/.test(currentUser.role)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+
+            var isGlobalAdmin = function() {
+                if (/global_admin/.test(currentUser.role)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+
+            var isSuperGlobalAdmin = function() {
+                if (/super_global_admin/.test(currentUser.role)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+
             var verifyUser = function(code) {
                 var message = {
                     code: code
@@ -57,6 +81,9 @@ angular.module('nhcWebApp')
                 },
                 refreshUser: refreshUser,
                 isAuthenticated: isAuthenticated,
+                isAdmin: isAdmin,
+                isGlobalAdmin: isGlobalAdmin,
+                isSuperGlobalAdmin: isSuperGlobalAdmin,
                 verifyUser: verifyUser
             };
         }

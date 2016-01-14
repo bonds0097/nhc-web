@@ -1,0 +1,15 @@
+<h1>Organizations</h1>
+<div ui-grid="ctrl.gridOptions" ui-grid-selection ui-grid-edit ui-grid-row-edit class="myGrid"></div>
+<div ng-if="ctrl.user.isGlobalAdmin()">
+    <div>
+        <p>
+            <a class="btn btn-primary" ng-click="ctrl.mergeOrgs(ctrl.selectedOrgs)" ng-disabled="ctrl.selectedOrgs.length < 2">Merge Selected</a>
+            <a class="btn btn-danger" ng-click="ctrl.deleteOrgs(ctrl.selectedOrgs)" ng-disabled="ctrl.isEmpty(ctrl.selectedOrgs)">Delete Selected</a>
+        </p>
+    </div>
+    <div>
+      <p>
+        <a class="btn btn-success" ng-click="ctrl.addOrg()">Add Organization</a>
+      </p>
+    </div>
+</div>

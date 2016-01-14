@@ -78,7 +78,7 @@
                 <h4>Participant {{$index + 1}} <span ng-if="$first">(You)</span></h4>
             </div>
             <div class="col-sm-{{ctrl.css.addonWidth}}">
-                <p class="form-control-static"><span class="fa fa-plus-circle form-add form-addon" ng-if="$last" ng-click="ctrl.addParticipant()"></span> <span class="fa fa-minus-circle form-sub form-addon" ng-click="ctrl.deleteParticipant($index)" ng-if="!$first"></span></p>
+                <p class="form-control-static"><span class="fa fa-trash form-sub form-addon" ng-click="ctrl.deleteParticipant($index)" ng-if="!$first"></span></p>
             </div>
         </div>
         <!-- Contact Details -->
@@ -128,6 +128,12 @@
             <label for="userCustomCommit" class="col-sm-{{ctrl.css.labelWidth}} control-label">Custom Commitment <span class="fa fa-question-circle form-help" uib-tooltip="to be eligible for the drawing, your commitment must be specific and measurable. You CANNOT use words like 'try', 'reduce', 'increase', 'more', etc." tooltip-append-to-body="true" tooltip-close-popup-delay="1" tooltip-placement="right"></span></label>
             <div class="col-sm-{{ctrl.css.inputWidth}}">
                 <input type="text" name="userCustomCommit" id="userCustomCommit" class="form-control" ng-model="participant.custom" ng-required="participant.category === 'Other' || participant.commitment === 'Other'">
+            </div>
+        </div>
+        <!-- Add Participant Button -->
+        <div class="form-group" ng-if="ctrl.newRegistration.family && $last">
+            <div class="col-sm-offset-{{ctrl.css.labelWidth}} col-sm-{{ctrl.css.inputWidth}}">
+                <a class="btn btn-success"  ng-click="ctrl.addParticipant()">Add Participant</a>
             </div>
         </div>
     </div>

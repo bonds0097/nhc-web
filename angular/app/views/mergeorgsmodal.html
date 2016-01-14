@@ -1,0 +1,15 @@
+<div class="modal-header">
+  <h4>Merge Organizations</h4>
+</div>
+<div class="modal-body">
+    <p>Enter a new name under which all selected orgs will be merged.</p>
+    <form name="ctrl.form" novalidate>
+        <div class="form-group">
+            <label for="newOrgName" class="sr-only">New Name</label>
+            <input type="text" class="form-control" id="newOrgName" ng-model="ctrl.name" required>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-danger btn-block" ng-click="ctrl.merge()" ng-disabled="ctrl.form.$invalid" value="Merge">
+        </div>
+    </form>
+</div>

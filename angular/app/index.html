@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css" />
+    <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -31,7 +32,7 @@
                             <div class="col-md-10" ng-cloak>
                                 <span class="pull-right" uib-dropdown dropdown-append-to-body>
                                 <a id="login-button" class="btn btn-social btn-login" uib-dropdown-toggle>
-                                    <span class="fa"><img ng-cloak src="{{ctrl.user.currentUser().picture}}" class="img-circle text-center" alt="Profile Picture" height="25px" width="auto"></span> {{ctrl.user.currentUser().firstName}}
+                                    <span class="fa"><img ng-if="ctrl.user.currentUser().picture" ng-cloak src="{{ctrl.user.currentUser().picture}}" class="img-circle text-center" height="25px" width="auto"></span> {{ctrl.user.currentUser().firstName}}
                                 </a>
                                 <ul class="uib-dropdown-menu" role="menu" aria-labelledby="login-button">
                                     <!-- <li role="menuitem"><a href>Profile</a></li>
@@ -73,6 +74,7 @@
                     <li><a href="/prizes-and-sponsors">Prizes and Sponsors</a></li>
                     <li><a href="/resources">Resources</a></li>
                     <li><a href="/about-us">About Us</a></li>
+                    <li ng-if="ctrl.user.isAdmin()"><a href="/admin">Admin</a></li>
                 </ul>
             </div>
         </div>
@@ -101,7 +103,7 @@
                     </ul>
                 </div>
                 <p class="text-center"><strong>Email us at: <a href="mailto:NHC@oneononefit.com" target="_blank">NHC@oneononefit.com</a></strong></p>
-                <p class="text-center"><small>Copyright&copy; 2009-2015 Nutrition Habit Challenge&#8480;. All rights reserved.</small></p>
+                <p class="text-center"><small>Copyright&copy; 2009-2016 Nutrition Habit Challenge&#8480;. All rights reserved.</small></p>
             </div>
         </div>
     </div>
@@ -124,24 +126,16 @@
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/ng-lodash/build/ng-lodash.js"></script>
     <script src="bower_components/satellizer/satellizer.js"></script>
-    <script src="bower_components/waypoints/lib/noframework.waypoints.min.js"></script>
     <script src="bower_components/SHA-1/sha1.js"></script>
     <script src="bower_components/angulartics/src/angulartics.js"></script>
-    <script src="bower_components/angulartics/src/angulartics-clicky.js"></script>
-    <script src="bower_components/angulartics/src/angulartics-cnzz.js"></script>
-    <script src="bower_components/angulartics/src/angulartics-ga-cordova.js"></script>
-    <script src="bower_components/angulartics/src/angulartics-gtm.js"></script>
-    <script src="bower_components/angulartics/src/angulartics-piwik.js"></script>
-    <script src="bower_components/angulartics/src/angulartics-scroll.js"></script>
-    <script src="bower_components/angulartics/src/angulartics-splunk.js"></script>
-    <script src="bower_components/angulartics/src/angulartics-woopra.js"></script>
-    <script src="bower_components/angulartics/src/angulartics-marketo.js"></script>
-    <script src="bower_components/angulartics/src/angulartics-intercom.js"></script>
-    <script src="bower_components/angulartics/src/angulartics-inspectlet.js"></script>
-    <script src="bower_components/angulartics/src/angulartics-newrelic-insights.js"></script>
     <script src="bower_components/angulartics-google-analytics/lib/angulartics-google-analytics.js"></script>
     <script src="bower_components/angular-messages/angular-messages.js"></script>
     <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
+    <script src="bower_components/tv4/tv4.js"></script>
+    <script src="bower_components/objectpath/lib/ObjectPath.js"></script>
+    <script src="bower_components/angular-schema-form/dist/schema-form.js"></script>
+    <script src="bower_components/angular-schema-form/dist/bootstrap-decorator.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -184,6 +178,17 @@
     <script src="scripts/controllers/leaderboards.js"></script>
     <script src="scripts/directives/nhcsignupverify.js"></script>
     <script src="scripts/controllers/signupverify.js"></script>
+    <script src="scripts/controllers/admin.js"></script>
+    <script src="scripts/directives/nhcadminorg.js"></script>
+    <script src="scripts/controllers/adminorg.js"></script>
+    <script src="scripts/controllers/addorgmodal.js"></script>
+    <script src="scripts/controllers/mergeorgsmodal.js"></script>
+    <script src="scripts/directives/nhcadminusers.js"></script>
+    <script src="scripts/controllers/adminusers.js"></script>
+    <script src="scripts/services/users.js"></script>
+    <script src="scripts/filters/maprole.js"></script>
+    <script src="scripts/directives/nhcadminpart.js"></script>
+    <script src="scripts/controllers/adminpart.js"></script>
     <!-- endbuild -->
     <!-- Google Analytics -->
     <script>

@@ -20,7 +20,13 @@ angular
         'satellizer',
         'angulartics',
         'angulartics.google.analytics',
-        'ngMessages'
+        'ngMessages',
+        'ui.grid',
+        'ui.grid.selection',
+        'ui.grid.edit',
+        'ui.grid.rowEdit',
+        'schemaForm',
+        'ui.grid.exporter'
     ])
     .constant('AUTH_EVENTS', {
         authStatusChanged: 'auth-status-changed'
@@ -75,6 +81,11 @@ angular
                     templateUrl: 'views/verify.html',
                     controller: 'VerifyCtrl',
                     controllerAs: 'ctrl'
+                })
+                .when('/admin', {
+                  templateUrl: 'views/admin.html',
+                  controller: 'AdminCtrl',
+                  controllerAs: 'ctrl'
                 })
                 .otherwise({
                     redirectTo: '/'

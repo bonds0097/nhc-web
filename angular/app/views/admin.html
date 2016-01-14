@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-2">
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" ng-if="ctrl.isAdmin()" ng-class="{active: ctrl.selectedTab === 'adminUsers'}"><a href="#" ng-click="ctrl.selectTab('adminUsers')">Users</a></li>
+            <li role="presentation" ng-if="ctrl.isAdmin()" ng-class="{active: ctrl.selectedTab === 'adminPart'}"><a href="#" ng-click="ctrl.selectTab('adminPart')">Participants</a></li>
+            <li role="presentation" ng-if="ctrl.isGlobalAdmin()" ng-class="{active: ctrl.selectedTab === 'adminOrg'}"><a href="#" ng-click="ctrl.selectTab('adminOrg')">Organizations</a></li>
+            <li role="presentation" ng-if="ctrl.isAdmin()" ng-class="{active: ctrl.selectedTab === 'adminComms'}"><a href="#" ng-click="ctrl.selectTab('adminComms')">Communications</a></li>
+        </ul>
+    </div>
+    <div class="col-md-10">
+        <div class="row">
+            <div class="col-md-8">
+                <nhc-alert></nhc-alert>
+            </div>
+        </div>
+        <div ng-if="ctrl.isAdmin()" ng-switch="ctrl.selectedTab">
+            <div ng-switch-when="default">
+                <p>Make your selection the left to manage a specific area of functionality.</p>
+            </div>
+            <nhc-admin-users ng-switch-when="adminUsers"></nhc-admin-users>
+            <nhc-admin-part ng-switch-when="adminPart"></nhc-admin-part>
+            <nhc-admin-org ng-switch-when="adminOrg"></nhc-admin-org>
+        </div>
+        <div ng-if="!ctrl.isAdmin()" >Access Denied</div>
+    </div>
+</div>

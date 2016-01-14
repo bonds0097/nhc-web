@@ -14,7 +14,19 @@ angular.module('nhcWebApp')
                 method: 'GET',
                 url: API.baseUrl + '/api/organizations',
                 isArray: true,
-                cache: true
+                cache: false
+            },
+            update: {
+                url: API.baseUrl + '/api/admin/organizations',
+                method: 'PUT'
+            },
+            delete: {
+                method: 'DELETE',
+                url: API.baseUrl + '/api/admin/organizations/:id'
+            },
+            merge: {
+                method: 'POST',
+                url: API.baseUrl + '/api/admin/organizations/merge'
             }
         });
     }]);

@@ -15,6 +15,12 @@ angular.module('nhcWebApp')
                 url: API.baseUrl + '/api/participant',
                 isArray: true,
                 cache: true
+            },
+            getAdmin: {
+                method:'GET',
+                url: API.baseUrl + '/api/admin/participant',
+                isArray: true,
+                cache: true
             }
         });
     }]);
