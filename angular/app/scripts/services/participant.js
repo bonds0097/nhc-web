@@ -14,13 +14,17 @@ angular.module('nhcWebApp')
                 method: 'GET',
                 url: API.baseUrl + '/api/participant',
                 isArray: true,
-                cache: true
+                cache: false
             },
             getAdmin: {
                 method:'GET',
                 url: API.baseUrl + '/api/admin/participant',
                 isArray: true,
-                cache: true
+                cache: false
+            },
+            updateScorecard: {
+                method:'PUT',
+                url: API.baseUrl + '/api/participant/scorecard'
             }
         });
     }]);

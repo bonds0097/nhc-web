@@ -23,5 +23,9 @@ angular.module('nhcWebApp')
             self.close = function() {
                 $uibModalInstance.dismiss('Closed by user.');
             };
+
+            self.updateScorecard = function() {
+                $uibModalInstance.close(participant);
+            };
         }
     ]);

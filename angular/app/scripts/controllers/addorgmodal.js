@@ -8,10 +8,15 @@
  * Controller of the nhcWebApp
  */
 angular.module('nhcWebApp')
-  .controller('AddOrgModalCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+    .controller('AddOrgModalCtrl', ['$uibModalInstance', function($uibModalInstance) {
+        var self = this;
+
+        self.addOrg = function() {
+            $uibModalInstance.close(self.orgName);
+        };
+
+        self.cancel = function() {
+          $uibModalInstance.dismiss();
+        };
+
+    }]);

@@ -388,37 +388,49 @@ module.exports = function(grunt) {
         copy: {
             dist: {
                 files: [{
-                    expand: true,
-                    dot: true,
-                    cwd: '<%= yeoman.app %>',
-                    dest: '<%= yeoman.dist %>',
-                    src: [
-                        '*.{ico,png,txt}',
-                        '.htaccess',
-                        '*.html',
-                        'img/{,*/}*.{webp}',
-                        'styles/fonts/{,*/}*.*',
-                        'downloads{,*/}*.*'
-                    ]
-                }, {
-                    expand: true,
-                    cwd: '.tmp/img',
-                    dest: '<%= yeoman.dist %>/img',
-                    src: ['generated/*']
-                }, {
+                        expand: true,
+                        dot: true,
+                        cwd: '<%= yeoman.app %>',
+                        dest: '<%= yeoman.dist %>',
+                        src: [
+                            '*.{ico,png,txt}',
+                            '.htaccess',
+                            '*.html',
+                            'img/{,*/}*.{webp}',
+                            'styles/fonts/{,*/}*.*',
+                            'downloads{,*/}*.*'
+                        ]
+                    }, {
+                        expand: true,
+                        cwd: '.tmp/img',
+                        dest: '<%= yeoman.dist %>/img',
+                        src: ['generated/*']
+                    },
+                    // For UI Grid Fonts
+                    {
+                        expand: true,
+                        flatten: true,
+                        dest: 'dist/styles/',
+                        src: ['bower_components/angular-ui-grid/ui-grid.ttf',
+                            'bower_components/angular-ui-grid/ui-grid.woff',
+                            'bower_components/angular-ui-grid/ui-grid.eot',
+                            'bower_components/angular-ui-grid/ui-grid.svg'
+                        ]
+                    }, {
 
-                    //for font-awesome
-                    expand: true,
-                    dot: true,
-                    cwd: 'bower_components/font-awesome',
-                    src: ['fonts/*.*'],
-                    dest: '<%= yeoman.dist %>'
-                }, {
-                    expand: true,
-                    cwd: '.',
-                    src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
-                    dest: '<%= yeoman.dist %>'
-                }]
+                        //for font-awesome
+                        expand: true,
+                        dot: true,
+                        cwd: 'bower_components/font-awesome',
+                        src: ['fonts/*.*'],
+                        dest: '<%= yeoman.dist %>'
+                    }, {
+                        expand: true,
+                        cwd: '.',
+                        src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
+                        dest: '<%= yeoman.dist %>'
+                    }
+                ]
             },
             styles: {
                 expand: true,

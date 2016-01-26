@@ -35,8 +35,8 @@
                                     <span class="fa"><img ng-if="ctrl.user.currentUser().picture" ng-cloak src="{{ctrl.user.currentUser().picture}}" class="img-circle text-center" height="25px" width="auto"></span> {{ctrl.user.currentUser().firstName}}
                                 </a>
                                 <ul class="uib-dropdown-menu" role="menu" aria-labelledby="login-button">
-                                    <!-- <li role="menuitem"><a href>Profile</a></li>
-                                    <li class="divider"></li> -->
+                                    <li role="menuitem"><a href ng-click="ctrl.openProfile()">Profile</a></li>
+                                    <li class="divider"></li>
                                     <li role="menuitem"><a href ng-click="ctrl.signOut()">Sign Out</a></li>
                                 </ul>
                                 </span>
@@ -189,6 +189,12 @@
     <script src="scripts/filters/maprole.js"></script>
     <script src="scripts/directives/nhcadminpart.js"></script>
     <script src="scripts/controllers/adminpart.js"></script>
+    <script src="scripts/directives/nhcadmincomm.js"></script>
+    <script src="scripts/controllers/admincomm.js"></script>
+    <script src="scripts/services/communications.js"></script>
+    <script src="scripts/controllers/profilemodal.js"></script>
+    <script src="scripts/directives/nhcadminglobals.js"></script>
+    <script src="scripts/controllers/adminglobals.js"></script>
     <!-- endbuild -->
     <!-- Google Analytics -->
     <script>

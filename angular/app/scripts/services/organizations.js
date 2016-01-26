@@ -16,6 +16,10 @@ angular.module('nhcWebApp')
                 isArray: true,
                 cache: false
             },
+            save: {
+                url: API.baseUrl + '/api/admin/organizations',
+                method: 'POST'
+            },
             update: {
                 url: API.baseUrl + '/api/admin/organizations',
                 method: 'PUT'

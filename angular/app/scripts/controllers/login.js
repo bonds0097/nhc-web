@@ -27,5 +27,13 @@ angular.module('nhcWebApp')
                     size: 'sm'
                 });
             };
+
+            // Open user profile.
+            self.openProfile = function() {
+                $uibModal.open({
+                    templateUrl: 'views/profilemodal.html',
+                    controller:'ProfileModalCtrl as ctrl'
+                });
+            };
         }
     ]);

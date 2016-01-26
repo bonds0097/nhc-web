@@ -36,7 +36,7 @@ angular.module('nhcWebApp')
                         } else {
                             self.Alerts.addAlert({
                                 message: errResponse.data.error,
-                                type: 'warning'
+                                type: 'danger'
                             });
                         }
                     });

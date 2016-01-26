@@ -17,6 +17,10 @@ angular.module('nhcWebApp')
             },
             update: {
                 method: 'PUT'
+            },
+            updateSelf: {
+                url: API.baseUrl + '/api/user',
+                method:'PUT'
             }
         });
     }]);

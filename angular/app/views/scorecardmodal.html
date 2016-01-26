@@ -26,6 +26,6 @@
     <h4 class="text-right"><strong>Total Score:</strong> {{ctrl.sum(ctrl.flatten(ctrl.participant.scorecard))}}</h4>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-danger" ng-disabled="!ctrl.globals.scorecardEnabled">Apply Changes</button>
+    <button class="btn btn-danger" ng-disabled="!ctrl.globals.scorecardEnabled" ng-click="ctrl.updateScorecard()">Apply Changes</button>
     <button class="btn btn-default" ng-click="ctrl.close()">Cancel</button>
 </div>

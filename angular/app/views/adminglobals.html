@@ -1,0 +1,49 @@
+<h1>Global Settings</h1>
+<p>Be careful with these, they control critical stuff for the challenge like when it starts and ends, etc.</p>
+<form name="ctrl.form" class="form-horizontal" novalidate>
+    <div class="form-group">
+        <label class="col-sm-{{ctrl.css.labelWidth}} control-label" for="challengeStart">Challenge Start</label>
+        <div class="col-sm-{{ctrl.css.inputWidth}}">
+            <div class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup ng-model="ctrl.globals.challengeStart" is-open="ctrl.startOpened" close-text="Close" />
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="ctrl.openStart()"><i class="fa fa-calendar"></i></button>
+              </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-{{ctrl.css.labelWidth}} control-label" for="challengeEnd">Challenge End</label>
+        <div class="col-sm-{{ctrl.css.inputWidth}}">
+            <div class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup ng-model="ctrl.globals.challengeEnd" is-open="ctrl.endOpened" close-text="Close" id="challengeEnd" />
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="ctrl.openEnd()"><i class="fa fa-calendar"></i></button>
+              </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-{{ctrl.css.inputWidth}} col-sm-offset-{{ctrl.css.labelWidth}}">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="ctrl.globals.registrationOpen"> Registration Open
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-{{ctrl.css.inputWidth}} col-sm-offset-{{ctrl.css.labelWidth}}">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="ctrl.globals.scorecardEnabled"> Scorecard Enabled
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-{{ctrl.css.inputWidth}} col-sm-offset-{{ctrl.css.labelWidth}}">
+            <button type="submit" class="btn btn-danger" ng-click="ctrl.saveSettings()">Save Settings</button>
+        </div>
+    </div>
+</form>

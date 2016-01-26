@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"strconv"
+	"time"
 )
 
 var (
@@ -63,24 +64,25 @@ func main() {
 	setLandingHandlers()
 
 	// Start the servers based on whether or not HTTPS is enabled.
+	s := &http.Server{
+		Addr:           ":8080",
+		ReadTimeout:    10 * time.Second,
+		WriteTimeout:   10 * time.Second,
+		MaxHeaderBytes: 1 << 20,
+	}
+
 	if (environment == "prod" || environment == "test") && enableHTTPS {
-		log.Println("HTTPS is enabled.")
+		log.Println("HTTPS is enabled. Starting server on port 8443 w/ redirect on 8080.")
 		go func() {
 			err := http.ListenAndServe(":8080", http.RedirectHandler("https://"+url, http.StatusMovedPermanently))
 			if err != nil {
 				log.Fatalf("HTTP Error: %s", err)
 			}
 		}()
-
-		err := http.ListenAndServeTLS(":8443", "/var/private/nhc_cert.pem", "/var/private/nhc_key.pem", nil)
-		if err != nil {
-			log.Fatalf("HTTPS Error: %s\n", err)
-		}
+		s.Addr = ":8443"
+		log.Fatal(s.ListenAndServeTLS("/var/private/nhc_cert.pem", "/var/private/nhc_key.pem"))
 	} else {
-		log.Println("HTTPS is not enabled.")
-		err := http.ListenAndServe(":8080", nil)
-		if err != nil {
-			log.Fatalf("HTTPS Error: %s\n", err)
-		}
+		log.Println("HTTPS is not enabled. Starting server on port 8080.")
+		log.Fatal(s.ListenAndServe())
 	}
 }

@@ -2,12 +2,13 @@
     <div class="col-md-3 sidebar" ng-if="!ctrl.globals.scorecardEnabled">
         <img class="img-responsive center-block" src="img/nhc_logo.jpg" alt="Nutrition Habit Challenge 2016" />
         <blockquote class="blockquote-reverse">
-            <p><em>“We all have choices. Each of us needs to take personal responsibility for our health. The Nutrition Habit Challenge is a great opportunity to exercise personal responsibility and model it for the next generation. We hope you will join us."</em></p>
+            <p><em>"We all have choices. Each of us needs to take personal responsibility for our health. The Nutrition Habit Challenge is a great opportunity to exercise personal responsibility and model it for the next generation. We hope you will join us."</em></p>
             <p><small>Bruce and Kym Burke</small></p>
         </blockquote>
     </div>
     <nhc-leaderboards ng-if="ctrl.globals.scorecardEnabled"></nhc-leaderboards>
     <div class="col-md-8">
+        <nhc-alert></nhc-alert>
         <h1>Scorecard<span ng-if="ctrl.participants.length > 1">s</span></h1>
         <p>Below you can view and update your scorecard<span ng-if="ctrl.participants.length > 1">s</span> in order to track <span ng-if="ctrl.participants.length > 1">you and</span> your <span ng-if="ctrl.participants.length > 1">family's</span> progress during the challenge!</p>
         <div class="alert alert-warning" role="alert" ng-if="!ctrl.globals.scorecardEnabled">

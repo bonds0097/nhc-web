@@ -42,15 +42,15 @@ angular.module('nhcWebApp')
             self.gridOptions.columnDefs = [{
                 name: 'name',
                 cellEditableCondition: self.enableAdvanced,
-                width:'75%'
+                width: '75%'
             }, {
                 name: 'needsApproval',
                 displayName: 'Needs Approval',
                 visible: self.enableAdvanced,
                 type: 'boolean',
                 cellTemplate: '<input type="checkbox" ng-model="row.entity.needsApproval" ng-click="grid.appScope.ctrl.updateOrg(row)">',
-                width:'25%',
-                enableFiltering:false
+                width: '25%',
+                enableFiltering: false
             }];
 
             self.gridOptions.onRegisterApi = function(gridApi) {
@@ -65,6 +65,34 @@ angular.module('nhcWebApp')
 
                 gridApi.rowEdit.on.saveRow(null, self.editOrg);
 
+            };
+
+            self.addOrg = function() {
+                var modalInstance = $uibModal.open({
+                    templateUrl: 'views/addorgmodal.html',
+                    controller: 'AddOrgModalCtrl as ctrl',
+                    size: 'sm'
+                });
+
+                modalInstance.result.then(function(name) {
+                    var org = new Organizations({
+                        name: name
+                    });
+                    org.$save().then(function() {
+                        self.alerts.addAlert({
+                            message: 'Successfully added organization.',
+                            type: 'success'
+                        });
+                        self.loadOrgs();
+                        self.selectedOrgs = [];
+                        self.gridApi.selection.clearSelectedRows();
+                    }, function() {
+                        self.alerts.addAlert({
+                            message: 'Failed to add organization.',
+                            type: 'danger'
+                        });
+                    });
+                });
             };
 
             self.editOrg = function(rowEntity) {
