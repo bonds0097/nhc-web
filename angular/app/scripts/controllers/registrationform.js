@@ -9,9 +9,10 @@
  */
 angular.module('nhcWebApp')
     .controller('RegistrationFormCtrl', ['UserService', 'AlertService', 'Commitments', 'Registration',
-        'Organizations', 'lodash', '$window', '$uibModal', 'RegistrationData',
+        'Organizations', 'lodash', '$window', '$uibModal', 'RegistrationData', '$location',
+        '$anchorScroll',
         function(UserService, AlertService, Commitments, Registration, Organizations, lodash,
-            $window, $uibModal, RegistrationData) {
+            $window, $uibModal, RegistrationData, $location, $anchorScroll) {
             var self = this;
 
             self.false = false;
@@ -22,11 +23,13 @@ angular.module('nhcWebApp')
             self.commCategories = Commitments.get();
             self.organizations = Organizations.get();
 
+            self.submitted = false;
+
             self.newRegistration = RegistrationData.get();
             self.serverErrors = RegistrationData.errors();
 
             self.css = {
-                labelWidth: '2',
+                labelWidth: '3',
                 inputWidth: '6',
                 addonWidth: '1'
             };
@@ -75,7 +78,17 @@ angular.module('nhcWebApp')
                 self.newRegistration.participants[index].category = category.name;
             };
 
-            self.sendRegistration = function(newRegistration) {
+            self.sendRegistration = function(newRegistration, form) {
+                if (form) {
+                    if (form.$invalid) {
+                        self.Alerts.addAlert({type:"danger", message:"Your submission is invalid. Please make sure all fields are properly filled out. All fields are required except for Age Range and Comment."});
+                        self.submitted = true;
+                        $location.hash('top');
+                        $anchorScroll();
+                        return;
+                    }
+                }
+
                 // Figure out custom commitments.
                 lodash.forEach(self.newRegistration.participants, function(participant, index) {
                     if (participant.category === 'Other' || participant.commitment === 'Other') {

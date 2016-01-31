@@ -26,16 +26,17 @@ angular
         'ui.grid.edit',
         'ui.grid.rowEdit',
         'schemaForm',
-        'ui.grid.exporter'
+        'ui.grid.exporter',
+        'environment'
     ])
     .constant('AUTH_EVENTS', {
         authStatusChanged: 'auth-status-changed'
     })
     .constant('Moment', moment)
     .config(['$routeProvider', '$locationProvider', '$resourceProvider', '$httpProvider',
-        '$authProvider',
+        '$authProvider', 'envServiceProvider',
         function($routeProvider, $locationProvider, $resourceProvider, $httpProvider,
-            $authProvider) {
+            $authProvider, envServiceProvider) {
             $routeProvider
                 .when('/', {
                     templateUrl: 'views/main.html',
@@ -83,9 +84,9 @@ angular
                     controllerAs: 'ctrl'
                 })
                 .when('/admin', {
-                  templateUrl: 'views/admin.html',
-                  controller: 'AdminCtrl',
-                  controllerAs: 'ctrl'
+                    templateUrl: 'views/admin.html',
+                    controller: 'AdminCtrl',
+                    controllerAs: 'ctrl'
                 })
                 .otherwise({
                     redirectTo: '/'
@@ -98,8 +99,8 @@ angular
             $locationProvider.html5Mode(true);
 
             // General config for authProvider.
-            $authProvider.loginUrl = '//' + window.location.hostname + ':4433/auth/login';
-            $authProvider.signupUrl = '//' + window.location.hostname + ':4433/auth/signup';
+            $authProvider.loginUrl = '//localhost:4433/auth/login';
+            $authProvider.signupUrl = '//localhost:4433/auth/signup';
             $authProvider.tokenPrefix = 'nhc';
 
             // Facebook Configuration
@@ -108,7 +109,7 @@ angular
             });
             $authProvider.facebook({
                 name: 'facebook',
-                url: '//' + window.location.hostname + ':4433/auth/facebook',
+                url: 'https://api.nutritionhabitchallenge.com/auth/facebook',
                 authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
                 redirectUri: window.location.origin + '/',
                 requiredUrlParams: ['display', 'scope'],
@@ -127,7 +128,7 @@ angular
                 clientId: '38895207898-c0ga0u10pfcqm9d6s9graslif2h6j9a5.apps.googleusercontent.com'
             });
             $authProvider.google({
-                url: '//' + window.location.hostname + ':4433/auth/google',
+                url: 'https://api.nutritionhabitchallenge.com/auth/google',
                 authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
                 redirectUri: window.location.origin || window.location.protocol + '//' + window.location.host,
                 requiredUrlParams: ['scope'],
@@ -142,5 +143,25 @@ angular
                     height: 633
                 }
             });
+
+            // Environment config
+            envServiceProvider.config({
+                domains: {
+                    development: ['localhost'],
+                    production: ['nutritionhabitchallenge.com', 'www.nutritionhabitchallenge.com']
+                },
+                vars: {
+                    development: {
+                        apiUrl: '//localhost:4433'
+                    },
+                    production: {
+                        apiUrl: 'https://api.nutritionhabitchallenge.com'
+                    }
+                }
+            });
+
+            // run the environment check, so the comprobation is made
+            // before controllers and services are built
+            envServiceProvider.check();
         }
     ]);

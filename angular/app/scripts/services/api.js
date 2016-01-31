@@ -8,8 +8,8 @@
  * Factory in the nhcWebApp.
  */
 angular.module('nhcWebApp')
-  .factory('API', ['$location', function ($location) {
-    var baseUrl = '//' + $location.host() + ':4433';
+  .factory('API', ['$location', 'envService', function ($location, envService) {
+    var baseUrl = envService.read('apiUrl');
 
     // Public API here
     return {

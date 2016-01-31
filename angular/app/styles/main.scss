@@ -351,6 +351,11 @@ fieldset[disabled] .btn-landing-notcentre.active {
     cursor: pointer;
 }
 
+.has-error p {
+    color: #a94442;
+    font-size: 12px;
+}
+
 .myGrid {
     width: 100%;
     height: 500px;
