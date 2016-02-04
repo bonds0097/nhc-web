@@ -14,6 +14,10 @@ angular.module('nhcWebApp')
 
             self.Alerts = AlertService;
 
+            self.forgotPassword = function() {
+                $uibModalInstance.dismiss('User forgot password.');
+            };
+
             self.loginEmail = function(user) {
                 $auth.login(user)
                     .then(function() {

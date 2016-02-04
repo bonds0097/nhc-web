@@ -8,7 +8,9 @@
  * Controller of the nhcWebApp
  */
 angular.module('nhcWebApp')
-    .controller('RegistrationCtrl', ['UserService', function(UserService) {
+    .controller('RegistrationCtrl', ['UserService', 'Globals', function(UserService, Globals) {
         var self = this;
         self.user = UserService;
+
+        self.globals = Globals.get();
     }]);

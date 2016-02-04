@@ -15,7 +15,12 @@ angular.module('nhcWebApp')
             self.user = UserService;
             self.alerts = AlertService;
 
-            self.reset = function() {
+            self.reset = function(form) {
+                if (form) {
+                    form.$setPristine();
+                    form.$setUntouched();
+                }
+
                 self.sendUnregistered = true;
                 self.sendUnconfirmed = true;
                 self.sendRegistered = true;
@@ -30,11 +35,11 @@ angular.module('nhcWebApp')
 
             self.reset();
 
-            self.clearMessage = function() {
-                self.reset();
+            self.clearMessage = function(form) {
+                self.reset(form);
             };
 
-            self.sendMessage = function() {
+            self.sendMessage = function(form) {
                 var sendRole = [];
                 var sendStatus = [];
 
@@ -74,7 +79,7 @@ angular.module('nhcWebApp')
 
                 message.$sendMessage().then(function() {
                   self.alerts.addAlert({message:"Message successfully sent.", type:"success"});
-                  self.reset();
+                  self.reset(form);
                 }, function() {
                   self.alerts.addAlert({message:"Failed to send message. Please try again.", type:"danger"});
                 });

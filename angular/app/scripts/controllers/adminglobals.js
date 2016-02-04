@@ -16,8 +16,8 @@ angular.module('nhcWebApp')
 
         self.css = {
             labelWidth: '2',
-            inputWidth: '6',
-            addonWidth: '1'
+            inputWidth: '8',
+            addonWidth: '0'
         };
 
         self.openStart = function() {

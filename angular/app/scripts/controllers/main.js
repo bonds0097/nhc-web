@@ -8,7 +8,9 @@
  * Controller of the nhcWebApp
  */
 angular.module('nhcWebApp')
-  .controller('MainCtrl', ['Resources', function (Resources) {
+  .controller('MainCtrl', ['Resources','Globals', function (Resources, Globals) {
     var self = this;
+
     self.resources = Resources.get();
+    self.globals = Globals.get();
   }]);

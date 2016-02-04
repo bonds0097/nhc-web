@@ -1,6 +1,6 @@
 <h1>Communications</h1>
 <p>Use this interface to send a message to users. You can filter who receives your message by user status or role (if you are a global administrator).</p>
-<form name="ctrl.form" class="form" novalidate>
+<form name="ctrl.form" class="form col-md-10" novalidate>
     <h2>Filters</h2>
     <h3>User Status</h3>
     <div class="checkbox">
@@ -38,11 +38,11 @@
     </div>
     <div class="form-group" ng-class="{ 'has-error': ctrl.form.body.$touched && ctrl.form.body.$invalid }">
         <label for="body">Body</label>
-        <textarea name="body" class="form-control" rows="10" ng-model="ctrl.messageBody" id="body" placeholder="Enter Your Message Here" required ></textarea>
+        <text-angular name="body" ng-model="ctrl.messageBody" id="body" placeholder="Enter Your Message Here" required></text-angular>
         <div class="help-block" ng-messages="ctrl.form.body.$error" ng-if="ctrl.form.body.$touched">
             <div ng-messages-include="views/errormessages.html"></div>
         </div>
     </div>
-    <button type="submit" class="btn btn-danger" ng-disabled="ctrl.form.$invalid" ng-click="ctrl.sendMessage()">Send</button>
-    <button class="btn btn-default" ng-click="ctrl.clearMessage()">Reset</button>
+    <button type="submit" class="btn btn-danger" ng-disabled="ctrl.form.$invalid" ng-click="ctrl.sendMessage(ctrl.form)">Send</button>
+    <button class="btn btn-default" ng-click="ctrl.clearMessage(ctrl.form)">Reset</button>
 </form>

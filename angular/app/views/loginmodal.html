@@ -25,11 +25,13 @@
                 <div class="form-group">
                     <label for="userPassword" class="sr-only">Password</label>
                     <input type="password" class="form-control" id="userPassword" placeholder="Your Password" ng-model="ctrl.user.password" required>
+
                 </div>
                 <div class="form-group">
                     <a class="btn btn-block btn-social btn-email" ng-click="ctrl.loginEmail(ctrl.user)">
                         <span class="fa fa-envelope"></span>Sign in with E-Mail
                     </a>
+                    <span class="help-block text-center"><a href="/forgotten-password" ng-click="ctrl.forgotPassword()"><small>Forgot Your Password?</small></a></span>
                 </div>
             </form>
         </div>

@@ -27,7 +27,8 @@ angular
         'ui.grid.rowEdit',
         'schemaForm',
         'ui.grid.exporter',
-        'environment'
+        'environment',
+        'textAngular'
     ])
     .constant('AUTH_EVENTS', {
         authStatusChanged: 'auth-status-changed'
@@ -88,6 +89,16 @@ angular
                     controller: 'AdminCtrl',
                     controllerAs: 'ctrl'
                 })
+                .when('/forgotten-password', {
+                  templateUrl: 'views/forgotten-password.html',
+                  controller: 'ForgottenPasswordCtrl',
+                  controllerAs: 'ctrl'
+                })
+                .when('/reset-password/:code', {
+                  templateUrl: 'views/reset-password.html',
+                  controller: 'ResetPasswordCtrl',
+                  controllerAs: 'ctrl'
+                })
                 .otherwise({
                     redirectTo: '/'
                 });
@@ -99,8 +110,8 @@ angular
             $locationProvider.html5Mode(true);
 
             // General config for authProvider.
-            $authProvider.loginUrl = '//localhost:4433/auth/login';
-            $authProvider.signupUrl = '//localhost:4433/auth/signup';
+            $authProvider.loginUrl = 'https://api.nutritionhabitchallenge.com/auth/login';
+            $authProvider.signupUrl = 'https://api.nutritionhabitchallenge.com/auth/signup';
             $authProvider.tokenPrefix = 'nhc';
 
             // Facebook Configuration

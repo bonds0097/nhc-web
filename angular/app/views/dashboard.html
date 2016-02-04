@@ -1,12 +1,12 @@
 <div class="row">
-    <div class="col-md-3 sidebar" ng-if="!ctrl.globals.scorecardEnabled">
+    <div class="col-md-3 sidebar" ng-if="!ctrl.globals.leaderboardsEnabled">
         <img class="img-responsive center-block" src="img/nhc_logo.jpg" alt="Nutrition Habit Challenge 2016" />
         <blockquote class="blockquote-reverse">
             <p><em>"We all have choices. Each of us needs to take personal responsibility for our health. The Nutrition Habit Challenge is a great opportunity to exercise personal responsibility and model it for the next generation. We hope you will join us."</em></p>
             <p><small>Bruce and Kym Burke</small></p>
         </blockquote>
     </div>
-    <nhc-leaderboards ng-if="ctrl.globals.scorecardEnabled"></nhc-leaderboards>
+    <nhc-leaderboards ng-if="ctrl.globals.leaderboardsEnabled"></nhc-leaderboards>
     <div class="col-md-8">
         <nhc-alert></nhc-alert>
         <h1>Scorecard<span ng-if="ctrl.participants.length > 1">s</span></h1>
@@ -22,7 +22,7 @@
             </div>
         </div>
         <p><small>Want to track your progress on paper as well? <a href="downloads/scorecard.pdf" target="_blank">Download</a> and print the Scorecard PDF!</small></p>
-        <!-- <div>
+        <!-- <div ng-if="ctrl.globals.questionAvailable">
             <hr>
             <h1>Question of the Week</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem eius asperiores sequi saepe numquam sed vel rerum maxime quibusdam officiis? Vero laborum quam itaque nesciunt molestias dolores doloremque nostrum atque.</p>
@@ -51,6 +51,11 @@
             <hr>
         </div> -->
         <h1>News &amp; Updates</h1>
-        <p>The challenge hasn't started yet, check back on <strong>February 1st, 2016</strong> to start tracking your progress!</p>
+        <h2>Welcome to the Nutrition Habit Challenge!<br /> <small>February 1st, 2016</small></h2>
+        <p>The purpose of the NHC is to make a measurable, positive impact on the collective health of our community. Your participation and success is the key.</p>
+        <p>Throughout the Challenge, we will be providing nutrition education and inspiration to help you persevere with your commitment(s). Beginning the week of 2/8/16, we'll also be hosting a Weekly Bonus Question. Check back right here on your Dashboard to have a chance to win prizes.</p>
+        <p>Your scorecard is ready for you to begin recording your success. Simply click on the box under each day you are successful.</p>
+        <p>Also, In case you didn’t make the optional donation, but would like another opportunity, click here to donate to the <a href="http://ccysb.com/?page_id=817" target="_blank">Youth Service Bureau</a> or here to donate to <a href="https://cvim.ejoinme.org/MyPages/CVIMNHC/tabid/524126/Default.aspx" target="_blank">Centre Volunteers in Medicine</a></p>
+        <p>Finally, we want to hear from you. Drop us a line at <a href="mailto:nhc@oneononefit.com">nhc@oneononefit.com</a> and let us know how you are doing.</p>
     </div>
 </div>

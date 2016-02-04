@@ -43,6 +43,22 @@
     </div>
     <div class="form-group">
         <div class="col-sm-{{ctrl.css.inputWidth}} col-sm-offset-{{ctrl.css.labelWidth}}">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="ctrl.globals.leaderboardsEnabled"> Leaderboards Enabled
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-{{ctrl.css.labelWidth}} control-label" for="welcomeMessage">Welcome Message</label>
+        <div class="col-sm-{{ctrl.css.inputWidth}}">
+            <text-angular ng-model="ctrl.globals.welcomeMessage" name="welcomeMessage" id="welcomeMessage"></text-angular>
+            <span class="help-block">This will show up in a blue alert box on the welcome page.</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-{{ctrl.css.inputWidth}} col-sm-offset-{{ctrl.css.labelWidth}}">
             <button type="submit" class="btn btn-danger" ng-click="ctrl.saveSettings()">Save Settings</button>
         </div>
     </div>
