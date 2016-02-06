@@ -51,11 +51,9 @@
             <hr>
         </div> -->
         <h1>News &amp; Updates</h1>
-        <h2>Welcome to the Nutrition Habit Challenge!<br /> <small>February 1st, 2016</small></h2>
-        <p>The purpose of the NHC is to make a measurable, positive impact on the collective health of our community. Your participation and success is the key.</p>
-        <p>Throughout the Challenge, we will be providing nutrition education and inspiration to help you persevere with your commitment(s). Beginning the week of 2/8/16, we'll also be hosting a Weekly Bonus Question. Check back right here on your Dashboard to have a chance to win prizes.</p>
-        <p>Your scorecard is ready for you to begin recording your success. Simply click on the box under each day you are successful.</p>
-        <p>Also, In case you didn’t make the optional donation, but would like another opportunity, click here to donate to the <a href="http://ccysb.com/?page_id=817" target="_blank">Youth Service Bureau</a> or here to donate to <a href="https://cvim.ejoinme.org/MyPages/CVIMNHC/tabid/524126/Default.aspx" target="_blank">Centre Volunteers in Medicine</a></p>
-        <p>Finally, we want to hear from you. Drop us a line at <a href="mailto:nhc@oneononefit.com">nhc@oneononefit.com</a> and let us know how you are doing.</p>
+        <div ng-repeat="item in ctrl.sortByDate(ctrl.news)">
+            <h2>{{item.subject}}<br /><small>{{item.publishDate | date:'medium'}}</small></h2>
+            <span ng-bind-html="item.body"></span>
+        </div>
     </div>
 </div>

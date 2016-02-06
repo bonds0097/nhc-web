@@ -4,7 +4,8 @@
             <li role="presentation" ng-if="ctrl.isAdmin()" ng-class="{active: ctrl.selectedTab === 'adminUsers'}"><a href="#" ng-click="ctrl.selectTab('adminUsers')">Users</a></li>
             <li role="presentation" ng-if="ctrl.isAdmin()" ng-class="{active: ctrl.selectedTab === 'adminPart'}"><a href="#" ng-click="ctrl.selectTab('adminPart')">Participants</a></li>
             <li role="presentation" ng-if="ctrl.isGlobalAdmin()" ng-class="{active: ctrl.selectedTab === 'adminOrg'}"><a href="#" ng-click="ctrl.selectTab('adminOrg')">Organizations</a></li>
-            <li role="presentation" ng-if="ctrl.isAdmin()" ng-class="{active: ctrl.selectedTab === 'adminComms'}"><a href="#" ng-click="ctrl.selectTab('adminComm')">Communications</a></li>
+            <li role="presentation" ng-if="ctrl.isAdmin()" ng-class="{active: ctrl.selectedTab === 'adminComm'}"><a href="#" ng-click="ctrl.selectTab('adminComm')">Communications</a></li>
+            <li role="presentation" ng-if="ctrl.isAdmin()" ng-class="{active: ctrl.selectedTab === 'adminNews'}"><a href="#" ng-click="ctrl.selectTab('adminNews')">News &amp; Updates</a></li>
             <li role="presentation" ng-if="ctrl.isGlobalAdmin()" ng-class="{active: ctrl.selectedTab === 'adminGlobals'}"><a href="#" ng-click="ctrl.selectTab('adminGlobals')">Global Settings</a></li>
         </ul>
     </div>
@@ -22,6 +23,7 @@
             <nhc-admin-part ng-switch-when="adminPart"></nhc-admin-part>
             <nhc-admin-org ng-switch-when="adminOrg"></nhc-admin-org>
             <nhc-admin-comm ng-switch-when="adminComm"></nhc-admin-comm>
+            <nhc-admin-news ng-switch-when="adminNews"></nhc-admin-news>
             <nhc-admin-globals ng-switch-when="adminGlobals"></nhc-admin-globals>
         </div>
         <div ng-if="!ctrl.isAdmin()">Access Denied</div>

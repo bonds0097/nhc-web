@@ -8,13 +8,19 @@
  * Controller of the nhcWebApp
  */
 angular.module('nhcWebApp')
-    .controller('DashboardCtrl', ['Participants', '$uibModal', 'Globals', 'AlertService',
-        function(Participants, $uibModal, Globals, AlertService) {
+    .controller('DashboardCtrl', ['Participants', '$uibModal', 'Globals', 'AlertService', 'News',
+        'lodash',
+        function(Participants, $uibModal, Globals, AlertService, News, lodash) {
             var self = this;
 
             self.alerts = AlertService;
             self.participants = Participants.get();
             self.globals = Globals.get();
+            self.news = News.get();
+
+            self.sortByDate = function(array) {
+                return lodash.reverse(lodash.sortBy(array, 'publishDate'));
+            };
 
             self.openScorecard = function(participant) {
                 var scorecard = $uibModal.open({
