@@ -22,34 +22,7 @@
             </div>
         </div>
         <p><small>Want to track your progress on paper as well? <a href="downloads/scorecard.pdf" target="_blank">Download</a> and print the Scorecard PDF!</small></p>
-        <!-- <div ng-if="ctrl.globals.questionAvailable">
-            <hr>
-            <h1>Question of the Week</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem eius asperiores sequi saepe numquam sed vel rerum maxime quibusdam officiis? Vero laborum quam itaque nesciunt molestias dolores doloremque nostrum atque.</p>
-            <form>
-                <div class="form-group">
-                    <div class="radio">
-                        <label>
-                            <input type="radio"> Answer 1
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio"> Answer 2
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio"> Answer 3
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-danger btn-sm">Submit Answer</button>
-                    </div>
-                </div>
-            </form>
-            <hr>
-        </div> -->
+        <nhc-bonus-question></nhc-bonus-question>
         <h1>News &amp; Updates</h1>
         <div ng-repeat="item in ctrl.sortByDate(ctrl.news)">
             <h2>{{item.subject}}<br /><small>{{item.publishDate | date:'medium'}}</small></h2>

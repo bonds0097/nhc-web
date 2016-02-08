@@ -1,0 +1,63 @@
+<h1>Bonus Questions</h1>
+<p>Created Bonus Questions show up here and you can click in to view a list of people who have answered and whether they answered correctly. Select which question is active from the dropdown. Only one question can be active at any given time.</p>
+<div class="row">
+    <div class="col-md-10">
+        <table class="table">
+            <thead>
+                <th>Question</th>
+                <th class="text-center">Enabled</th>
+                <th class="text-center"># of Respondents</th>
+                <th class="text-center">Respondents</th>
+                <th class="text-center">Delete</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="question in ctrl.questions">
+                    <td>{{question.text}}</td>
+                    <td class="text-center"><span ng-cloak ng-if="question.enabled" class="fa fa-check"></span></td>
+                    <td class="text-center">{{question.respondents.length}}</td>
+                    <td class="text-center"><a class="btn btn-primary btn-block" ng-click="ctrl.viewRespondents(question.respondents)">View Respondents</a></td>
+                    <td class="text-center"><span ng-click="ctrl.delete(question.id)" class="fa fa-trash form-sub form-addon"></span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-6">
+                <select class="form-control" ng-options="question.id as question.text for question in ctrl.questions" ng-model="ctrl.selectedQuestion">
+                    <option value="">--- Select Question to Enable ---</option>
+                </select>
+            </div>
+            <div class="col-md-3"><a class="btn btn-success btn-sm" ng-click="ctrl.enableQuestion(ctrl.selectedQuestion)">Enable Selected Question</a></div>
+            <div class="col-md-3"><a class="btn btn-danger btn-sm" ng-click="ctrl.disableQuestions()">Disable All Questions</a></div>
+        </div>
+    </div>
+</div>
+<h2>Create New Question</h2>
+<p>All fields are required. Select the radio box to flag the correct answer.</p>
+<form name="ctrl.form" class="form col-md-10" novalidate>
+    <div class="form-group" ng-class="{ 'has-error': ctrl.form.text.$touched && ctrl.form.text.$invalid }">
+        <label for="subject">Question</label>
+        <input type="text" id="text" name="text" class="form-control" ng-model="ctrl.newQuestion.text" placeholder="Enter Question Here" required>
+        <span class="help-block" ng-messages="ctrl.form.text.$error" ng-if="ctrl.form.text.$touched">
+            <div ng-messages-include="views/errormessages.html"></div>
+        </span>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error': ctrl.form.answers.$touched && ctrl.form.answers.$invalid }">
+        <label for="answers">Answers</label>
+        <div ng-repeat="answer in ctrl.newQuestion.answers track by $index">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                  <input type="radio" name="enabled" ng-model="ctrl.newQuestion.correctAnswer" ng-value="answer">
+                </span>
+                    <input type="text" class="form-control" ng-model="ctrl.newQuestion.answers[$index]" placeholder="Enter Answer Here" required ng-minlength="3">
+                </div>
+            </div>
+            <!-- Add Answer Button -->
+            <div class="form-group" ng-if="$last">
+                <a class="btn btn-success" ng-click="ctrl.addAnswer()">Add Answer</a>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-danger" ng-disabled="ctrl.form.$invalid" ng-click="ctrl.saveQuestion(ctrl.form)">Save</button>
+    <button class="btn btn-default" ng-click="ctrl.clearQuestion(ctrl.form)">Reset</button>
+</form>

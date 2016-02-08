@@ -1,0 +1,18 @@
+<div ng-if="ctrl.userQuestion.enabled">
+    <hr>
+    <h1>Question of the Week</h1>
+    <p>{{ctrl.userQuestion.question.text}}</p>
+    <form>
+        <div class="form-group" ng-repeat="answer in ctrl.userQuestion.question.answers">
+            <div class="radio">
+                <label>
+                    <input type="radio" ng-value="answer" ng-model="ctrl.userAnswer"> {{answer}}
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-danger btn-sm" ng-click="ctrl.submitAnswer(ctrl.userAnswer)">Submit Answer</button>
+        </div>
+    </form>
+    <hr>
+</div>

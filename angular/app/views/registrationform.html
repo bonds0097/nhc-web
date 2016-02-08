@@ -126,7 +126,7 @@
                 <span class="help-block has-error" ng-show="((ctrl.form.commitment.$touched || ctrl.submitted) && ctrl.form.commitment.$invalid) || ctrl.serverErrors.commitment" ng-messages="ctrl.form.commitment.$error"><div class="has-error" ng-messages-include="views/errormessages.html"></div><span ng-repeat="error in ctrl.serverErrors.commitment">{{error}}</span></span>
             </div>
         </div>
-        <div class="form-group" ng-if="participant.category === 'Other' || participant.otherCommitment === 'Other'" ng-class="{'has-error': ((ctrl.form.otherCommitment.$touched || ctrl.submitted) && ctrl.form.otherCommitment.$invalid) || ctrl.serverErrors.otherCommitment}">
+        <div class="form-group" ng-if="participant.category === 'Other' || participant.commitment === 'Other'" ng-class="{'has-error': ((ctrl.form.otherCommitment.$touched || ctrl.submitted) && ctrl.form.otherCommitment.$invalid) || ctrl.serverErrors.otherCommitment}">
             <label for="userCustomCommit" class="col-sm-{{ctrl.css.labelWidth}} control-label">Custom Commitment <span class="fa fa-question-circle form-help" uib-tooltip="To be eligible for the drawing, your commitment must be specific and measurable. You CANNOT use words like 'try', 'reduce', 'increase', 'more', etc." tooltip-append-to-body="true" tooltip-close-popup-delay="1" tooltip-placement="right"></span></label>
             <div class="col-sm-{{ctrl.css.inputWidth}}">
                 <input type="text" id="userCustomCommit" name="otherCommitment" class="form-control" ng-model="participant.custom" ng-required="participant.category === 'Other' || participant.commitment === 'Other'">
