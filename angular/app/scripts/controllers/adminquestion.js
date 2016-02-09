@@ -8,8 +8,8 @@
  * Controller of the nhcWebApp
  */
 angular.module('nhcWebApp')
-    .controller('AdminQuestionCtrl', ['Questions', 'AlertService', 'lodash',
-        function(Questions, AlertService, lodash) {
+    .controller('AdminQuestionCtrl', ['Questions', 'AlertService', 'lodash', '$uibModal',
+        function(Questions, AlertService, lodash, $uibModal) {
             var self = this;
 
             self.alerts = AlertService;
@@ -104,6 +104,43 @@ angular.module('nhcWebApp')
                         type: 'danger',
                         message: 'Failed to disable questions: ' + errResponse.data.error
                     });
+                });
+            };
+
+            self.deleteQuestion = function(id) {
+                if (!id) {
+                  self.alerts.addAlert({
+                        type: 'danger',
+                        message: 'Select a question to delete.'
+                    });
+                  return;
+                }
+
+                Questions.delete({
+                    id: id
+                }).$promise.then(function() {
+                    self.alerts.addAlert({
+                        type: 'success',
+                        message: 'Question successfully deleted.'
+                    });
+                    self.questions = Questions.get();
+                }, function(errResponse) {
+                    self.alerts.addAlert({
+                        type: 'danger',
+                        message: 'Failed to delete question: ' + errResponse.data.error
+                    });
+                });
+            };
+
+            self.viewRespondents = function(respondents) {
+              $uibModal.open({
+                    controller: 'QuestionRespModalCtrl as ctrl',
+                    resolve: {
+                        respondents: function() {
+                            return respondents;
+                        }
+                    },
+                    templateUrl: 'views/questionrespmodal.html'
                 });
             };
         }

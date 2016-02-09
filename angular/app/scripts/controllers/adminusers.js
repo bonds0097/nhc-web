@@ -117,7 +117,9 @@ angular.module('nhcWebApp')
             cellEditableCondition: self.enableAdvanced,
             width: '8%'
         }, {
-            name: 'comment',
+            name: 'lastLogin',
+            type: 'date',
+            cellFilter: 'date:\'medium\'',
             enableFiltering: false,
             enableCellEdit: false
         }];

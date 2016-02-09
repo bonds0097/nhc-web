@@ -16,7 +16,7 @@
                     <td class="text-center"><span ng-cloak ng-if="question.enabled" class="fa fa-check"></span></td>
                     <td class="text-center">{{question.respondents.length}}</td>
                     <td class="text-center"><a class="btn btn-primary btn-block" ng-click="ctrl.viewRespondents(question.respondents)">View Respondents</a></td>
-                    <td class="text-center"><span ng-click="ctrl.delete(question.id)" class="fa fa-trash form-sub form-addon"></span></td>
+                    <td class="text-center"><span ng-click="ctrl.deleteQuestion(question.id)" class="fa fa-trash form-sub form-addon"></span></td>
                 </tr>
             </tbody>
         </table>
