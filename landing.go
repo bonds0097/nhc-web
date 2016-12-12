@@ -8,10 +8,7 @@ import (
 )
 
 func setLandingHandlers() {
-	http.HandleFunc("/landing", globalHandler(landingHandler))
-	http.HandleFunc("/landing/not-centre-county", globalHandler(notCentreLandingHandler))
-	http.HandleFunc("/landing/centre-county", globalHandler(centreLandingHandler))
-	http.HandleFunc("/", globalHandler(rootHandler))
+	http.HandleFunc("/", globalHandler(centreServeHandler))
 }
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
@@ -52,5 +49,5 @@ func notCentreLandingHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func notCentreServeHandler(w http.ResponseWriter, r *http.Request) {
-	http.Redirect(w, r, "http://www.psahperd.org/PA-Nutrition-Challenge-2016", http.StatusMovedPermanently)
+	http.Redirect(w, r, "http://www.psahperd.org/PA-Nutrition-Challenge-2017", http.StatusMovedPermanently)
 }

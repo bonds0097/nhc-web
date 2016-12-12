@@ -1,0 +1,17 @@
+{
+    "dev": {
+        "url": "localhost",
+        "root_dir": "/vagrant/project/src/github.com/bonds0097/nhc-web/angular/app"
+    },
+    "prod": {
+        "url": "www.nutritionhabitchallenge.com",
+        "root_dir": "/var/www/nhc-web",
+        "enableHTTPS": "true"
+    },
+    "test": {
+        "url": "test.nutritionhabitchallenge.com",
+        "root_dir": "/var/www/nhc-web",
+        "enableHTTPS": "true"
+    },
+    "global": {}
+}

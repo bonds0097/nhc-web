@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-3 sidebar">
-        <img class="img-responsive center-block" src="img/nhc_logo.jpg" alt="Nutrition Habit Challenge 2016" />
+        <img class="img-responsive center-block" src="img/nhc_logo.png" alt="Nutrition Habit Challenge 2016" />
         <blockquote class="blockquote-reverse">
             <p><em>"We all have choices. Each of us needs to take personal responsibility for our health. The Nutrition Habit Challenge is a great opportunity to exercise personal responsibility and model it for the next generation. We hope you will join us."</em></p>
             <p><small>Bruce and Kym Burke</small></p>
@@ -14,7 +14,8 @@
         </div>
         <div ng-if="ctrl.globals">
             <div ng-if="!ctrl.globals.registrationOpen" ng-cloak>
-                <p>Registration for Nutrition Habit Challenge 2016 is now closed. If you are registered, login and check out your Dashboard!</p>
+                <p>Registration for Nutrition Habit Challenge 2016 is now closed. If you are registered, login and check out
+                    your Dashboard!</p>
             </div>
             <div ng-if="ctrl.globals.registrationOpen" ng-cloak>
                 <div ng-switch="ctrl.user.currentUser().status">
@@ -29,7 +30,7 @@
             </div>
         </div>
         <div ng-if="!ctrl.globals">
-        <nhc-loading></nhc-loading>
+            <nhc-loading></nhc-loading>
         </div>
     </div>
 </div>
