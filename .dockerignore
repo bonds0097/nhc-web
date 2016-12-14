@@ -1,0 +1,5 @@
+angular/dist*
+angular/node_modules*
+angular/bower_components*
+angular/.tmp*
+angular/.sass-cache

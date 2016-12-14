@@ -1,7 +1,18 @@
 FROM golang:1.7.3
 
-RUN apt-get update
-RUN apt-get -y install nodejs
+RUN apt-get update && apt-get -y install nodejs \
+    npm \
+    build-essential \
+    ruby \
+    ruby-dev \
+    zlib1g-dev \
+    liblzma-dev
+
+RUN ln -s /usr/bin/nodejs /usr/bin/node
+RUN npm update -g npm
+
+RUN gem install sass
+RUN gem install compass
 
 RUN npm install -g bower grunt-cli
 
@@ -12,8 +23,13 @@ COPY settings/settings.json $APP_DIR
 
 # Copy the local package files to the container's workspace.
 COPY . /go/src/github.com/bonds0097/nhc-web
-WORKDIR /go/src/github.com/bonds0097/nhc-web
+WORKDIR /go/src/github.com/bonds0097/nhc-web/angular
 
+RUN npm install
+RUN bower install --allow-root
 RUN grunt build
 
+RUN go install github.com/bonds0097/nhc-web
+ENTRYPOINT /go/bin/nhc-web
 
+EXPOSE 8443

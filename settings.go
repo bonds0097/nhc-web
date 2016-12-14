@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"io/ioutil"
-	"log"
+	"path"
 )
 
 type Settings struct {
@@ -14,10 +14,12 @@ type Settings struct {
 }
 
 func loadSettings() (settings Settings) {
+	ctx := logger.WithField("method", "loadSettings")
+
 	// Open settings file.
-	b, err := ioutil.ReadFile(settingsLocation)
+	b, err := ioutil.ReadFile(path.Join(appDir, settingsLocation))
 	if err != nil {
-		log.Fatalf("Failed to load settings file: %s\n", err)
+		ctx.WithError(err).Fatal("Failed to load settings file.")
 	}
 
 	// Read the settings into a settings structure.

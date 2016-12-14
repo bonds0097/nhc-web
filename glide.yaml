@@ -1,0 +1,6 @@
+package: github.com/bonds0097/nhc-web
+import:
+- package: github.com/bonds0097/sslLoader
+- package: github.com/bshuster-repo/logrus-logstash-hook
+- package: github.com/Sirupsen/logrus
+  version: ~0.11.0

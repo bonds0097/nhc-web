@@ -1,0 +1,14 @@
+hash: d3263592ed474d863d47a046e3f463435ad6d00a3726c1ed841b431b0e3c874c
+updated: 2016-12-13T20:12:17.963843382-05:00
+imports:
+- name: github.com/bonds0097/sslLoader
+  version: ce4bd04b9505f03565711ee5643b7415ae1947df
+- name: github.com/bshuster-repo/logrus-logstash-hook
+  version: 544f72d23cd2536636193deff26b6190c47e10bb
+- name: github.com/Sirupsen/logrus
+  version: d26492970760ca5d33129d2d799e34be5c4782eb
+- name: golang.org/x/sys
+  version: a646d33e2ee3172a661fc09bca23bb4889a41bc8
+  subpackages:
+  - unix
+testImports: []
