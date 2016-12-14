@@ -36,7 +36,7 @@ angular
     .constant('Moment', moment)
     .config(['$routeProvider', '$locationProvider', '$resourceProvider', '$httpProvider',
         '$authProvider', 'envServiceProvider',
-        function($routeProvider, $locationProvider, $resourceProvider, $httpProvider,
+        function ($routeProvider, $locationProvider, $resourceProvider, $httpProvider,
             $authProvider, envServiceProvider) {
             $routeProvider
                 .when('/', {
@@ -90,14 +90,14 @@ angular
                     controllerAs: 'ctrl'
                 })
                 .when('/forgotten-password', {
-                  templateUrl: 'views/forgotten-password.html',
-                  controller: 'ForgottenPasswordCtrl',
-                  controllerAs: 'ctrl'
+                    templateUrl: 'views/forgotten-password.html',
+                    controller: 'ForgottenPasswordCtrl',
+                    controllerAs: 'ctrl'
                 })
                 .when('/reset-password/:code', {
-                  templateUrl: 'views/reset-password.html',
-                  controller: 'ResetPasswordCtrl',
-                  controllerAs: 'ctrl'
+                    templateUrl: 'views/reset-password.html',
+                    controller: 'ResetPasswordCtrl',
+                    controllerAs: 'ctrl'
                 })
                 .otherwise({
                     redirectTo: '/'
@@ -154,25 +154,5 @@ angular
                     height: 633
                 }
             });
-
-            // Environment config
-            envServiceProvider.config({
-                domains: {
-                    development: ['localhost'],
-                    production: ['nutritionhabitchallenge.com', 'www.nutritionhabitchallenge.com']
-                },
-                vars: {
-                    development: {
-                        apiUrl: '//localhost:4433'
-                    },
-                    production: {
-                        apiUrl: 'https://api.nutritionhabitchallenge.com'
-                    }
-                }
-            });
-
-            // run the environment check, so the comprobation is made
-            // before controllers and services are built
-            envServiceProvider.check();
         }
     ]);
