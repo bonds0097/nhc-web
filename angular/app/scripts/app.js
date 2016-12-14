@@ -27,7 +27,6 @@ angular
         'ui.grid.rowEdit',
         'schemaForm',
         'ui.grid.exporter',
-        'environment',
         'textAngular'
     ])
     .constant('AUTH_EVENTS', {
@@ -35,9 +34,9 @@ angular
     })
     .constant('Moment', moment)
     .config(['$routeProvider', '$locationProvider', '$resourceProvider', '$httpProvider',
-        '$authProvider', 'envServiceProvider',
+        '$authProvider',
         function ($routeProvider, $locationProvider, $resourceProvider, $httpProvider,
-            $authProvider, envServiceProvider) {
+            $authProvider) {
             $routeProvider
                 .when('/', {
                     templateUrl: 'views/main.html',
