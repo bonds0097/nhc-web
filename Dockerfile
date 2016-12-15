@@ -29,7 +29,7 @@ RUN npm install
 RUN bower install --allow-root
 RUN grunt build
 
-RUN cp ./dist /var/www/nhc-web
+RUN cp -R ./dist /var/www/nhc-web/
 
 # Get Glide
 RUN curl https://glide.sh/get | sh
