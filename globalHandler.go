@@ -21,3 +21,7 @@ func globalHandler(fn func(http.ResponseWriter, *http.Request)) http.HandlerFunc
 		fn(w, r)
 	}
 }
+
+func rootHandler(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, rootDir+"/index.html")
+}

@@ -29,6 +29,8 @@ RUN npm install
 RUN bower install --allow-root
 RUN grunt build
 
+RUN cp ./dist /var/www/nhc-web
+
 # Get Glide
 RUN curl https://glide.sh/get | sh
 
@@ -38,6 +40,7 @@ WORKDIR /go/src/github.com/bonds0097/nhc-web
 RUN glide install
 
 RUN go install github.com/bonds0097/nhc-web
-ENTRYPOINT /go/bin/nhc-web
+ENTRYPOINT /go/bin/nhc-web -env=dev
 
 EXPOSE 8443
+EXPOSE 8080

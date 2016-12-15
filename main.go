@@ -80,7 +80,9 @@ func main() {
 	}
 
 	setStaticHandlers()
-	setLandingHandlers()
+	ctx.Info("Set static handlers.")
+
+	http.HandleFunc("/", globalHandler(rootHandler))
 
 	// Start the servers based on whether or not HTTPS is enabled.
 	s := &http.Server{
