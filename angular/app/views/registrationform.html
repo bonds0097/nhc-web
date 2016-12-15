@@ -40,11 +40,11 @@
     </div>
     <div class="form-group" ng-if="ctrl.newRegistration.isUserOrg" ng-class="{'has-error': ((ctrl.form.organization.$touched || ctrl.submitted) && ctrl.form.organization.$invalid) || ctrl.serverErrors.organization}">
         <div class="col-sm-offset-{{ctrl.css.labelWidth}} col-sm-{{ctrl.css.inputWidth}}">
-            <select ng-model="ctrl.newRegistration.organization" name="organization" id="userOrganization" class="form-control" ng-options="organization.name as organization.name for organization in ctrl.organizations"
+            <select ng-model="ctrl.newRegistration.organization" name="organization" id="userOrganization" class="form-control" ng-options="organization.name as organization.name for organization in ctrl.organizations | orderBy: '+organization.name'"
                 ng-required="ctrl.newRegistration.isUserOrg">
                     <option value="">-- Choose Organization --</option>
             </select>
-            <span id="helpBlock" class="help-block">Don't see your group or organization? Request that it be added by emailing the name of the organization to info@nutritionhabitchallenge.com<br />
+            <span id="helpBlock" class="help-block">Don't see your group or organization? Request that it be added by emailing the name of the organization to info@nutritionhabitchallenge.com<br /><br />
             You can change your group or organization anytime by editing your Profile.
             </span>
             <span class="help-block has-error" ng-show="((ctrl.form.organization.$touched || ctrl.submitted) && ctrl.form.organization.$invalid) || ctrl.serverErrors.organization"
@@ -145,7 +145,6 @@
     <!-- Donation -->
     <div class="form-group" ng-class="{'has-error': ctrl.form.userDonation.$invalid || ctrl.serverErrors.userDonation}">
         <label class="col-sm-{{ctrl.css.labelWidth}} control-label" for="userDonation">Optional Donation <span class="fa fa-question-circle form-help" uib-tooltip="Would you like to support one of our awesome local charities?" tooltip-append-to-body="true" tooltip-close-popup-delay="1" tooltip-placement="right"></span></label>
-        <span id="helpBlock" class="help-block">This website and the Nutrition Habit Challenge are free to our community and is provided by a 100% volunteer committe who work year-round to make this a successful program. IN consideration of the value and the comitees' efforts, please consider a donation to one of the following non-profit organizations selected by the committee as beneficiaries of this program.</span>
         <div class="col-sm-{{ctrl.css.inputWidth}}">
             <div class="radio">
                 <label>
@@ -169,6 +168,7 @@
                     ng-messages="ctrl.form.userDonation.$error"><div class="has-error" ng-messages-include="views/errormessages.html"></div><span ng-repeat="error in ctrl.serverErrors.userDonation">{{error}}</span></span>
             </div>
         </div>
+        <span id="helpBlock" class="help-block">This website and the Nutrition Habit Challenge are free to our community and is provided by a 100% volunteer committe who work year-round to make this a successful program. In consideration of the value and the comitees' efforts, please consider a donation to one of the following non-profit organizations selected by the committee as beneficiaries of this program.</span>
     </div>
     <!-- Form Actions -->
     <div class="form-group ">
