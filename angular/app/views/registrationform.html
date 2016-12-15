@@ -40,38 +40,15 @@
     </div>
     <div class="form-group" ng-if="ctrl.newRegistration.isUserOrg" ng-class="{'has-error': ((ctrl.form.organization.$touched || ctrl.submitted) && ctrl.form.organization.$invalid) || ctrl.serverErrors.organization}">
         <div class="col-sm-offset-{{ctrl.css.labelWidth}} col-sm-{{ctrl.css.inputWidth}}">
-            <input type="text" ng-model="ctrl.newRegistration.organization" class="form-control" id="organization" name="organization"
-                placeholder="Name of Organization" ng-required="ctrl.newRegistration.isUserOrg" typeahead-editable="false" uib-typeahead="organization.name as organization.name for organization in ctrl.organizations | filter:$viewValue | limitTo:8"
-                autocomplete="off">
+            <select ng-model="ctrl.newRegistration.organization" name="organization" id="userOrganization" class="form-control" ng-options="organization.name as organization.name for organization in ctrl.organizations"
+                ng-required="ctrl.newRegistration.isUserOrg">
+                    <option value="">-- Choose Organization --</option>
+            </select>
+            <span id="helpBlock" class="help-block">Don't see your group or organization? Request that it be added by emailing the name of the organization to info@nutritionhabitchallenge.com<br />
+            You can change your group or organization anytime by editing your Profile.
+            </span>
             <span class="help-block has-error" ng-show="((ctrl.form.organization.$touched || ctrl.submitted) && ctrl.form.organization.$invalid) || ctrl.serverErrors.organization"
                 ng-messages="ctrl.form.organization.$error"><div class="has-error" ng-messages-include="views/errormessages.html"></div><span ng-repeat="error in ctrl.serverErrors.organization">{{error}}</span></span>
-        </div>
-    </div>
-    <!-- Privacy Settings -->
-    <div class="form-group" ng-class="{'has-error': ctrl.form.userShare.$invalid || ctrl.serverErrors.userShare}">
-        <label class="col-sm-{{ctrl.css.labelWidth}} control-label" for="userShare">Sharing Options <span class="fa fa-question-circle form-help" uib-tooltip="Who do you want to be able to see your name, commitment and points?" tooltip-append-to-body="true" tooltip-close-popup-delay="1" tooltip-placement="right"></span></label>
-        <div class="col-sm-{{ctrl.css.inputWidth}}">
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="ctrl.newRegistration.sharing" name="userShare" id="userShare1" value="everyone" required> Everyone
-                </label>
-            </div>
-        </div>
-        <div class="col-sm-offset-{{ctrl.css.labelWidth}} col-sm-{{ctrl.css.inputWidth}}" ng-if="ctrl.newRegistration.isUserOrg">
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="ctrl.newRegistration.sharing" name="userShare" id="userShare2" value="organization" required> My organization
-                </label>
-            </div>
-        </div>
-        <div class="col-sm-offset-{{ctrl.css.labelWidth}} col-sm-{{ctrl.css.inputWidth}}">
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="ctrl.newRegistration.sharing" name="userShare" id="userShare1" value="none" required> No one
-                </label>
-            </div>
-            <span class="help-block has-error" ng-show="(ctrl.submitted && ctrl.form.userShare.$invalid) || ctrl.serverErrors.userShare"
-                ng-messages="ctrl.form.userShare.$error"><div class="has-error" ng-messages-include="views/errormessages.html"></div><span ng-repeat="error in ctrl.serverErrors.userShare">{{error}}</span></span>
         </div>
     </div>
     <hr>
@@ -160,7 +137,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="referral" class="col-sm-{{ctrl.css.labelWidth}} control-label">Referral <span class="fa fa-question-circle form-help" uib-tooltip="How did you hear about the NHC?" tooltip-append-to-body="true" tooltip-close-popup-delay="1" tooltip-placement="right"></span></label>
+        <label for="referral" class="col-sm-{{ctrl.css.labelWidth}} control-label">How did your hear?<span class="fa fa-question-circle form-help" uib-tooltip="How did you hear about the NHC?" tooltip-append-to-body="true" tooltip-close-popup-delay="1" tooltip-placement="right"></span></label>
         <div class="col-sm-{{ctrl.css.inputWidth}}">
             <input type="text" name="referral" id="referral" ng-model="ctrl.newRegistration.referral">
         </div>
@@ -168,6 +145,7 @@
     <!-- Donation -->
     <div class="form-group" ng-class="{'has-error': ctrl.form.userDonation.$invalid || ctrl.serverErrors.userDonation}">
         <label class="col-sm-{{ctrl.css.labelWidth}} control-label" for="userDonation">Optional Donation <span class="fa fa-question-circle form-help" uib-tooltip="Would you like to support one of our awesome local charities?" tooltip-append-to-body="true" tooltip-close-popup-delay="1" tooltip-placement="right"></span></label>
+        <span id="helpBlock" class="help-block">This website and the Nutrition Habit Challenge are free to our community and is provided by a 100% volunteer committe who work year-round to make this a successful program. IN consideration of the value and the comitees' efforts, please consider a donation to one of the following non-profit organizations selected by the committee as beneficiaries of this program.</span>
         <div class="col-sm-{{ctrl.css.inputWidth}}">
             <div class="radio">
                 <label>
