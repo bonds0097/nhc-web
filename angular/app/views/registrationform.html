@@ -95,6 +95,7 @@
                     ng-change="ctrl.setCategory($index, participant.selectedCategory)" required>
                     <option value="">-- Choose Commitment Category --</option>
                 </select>
+                <span id="helpBlock" class="help-block"><a href="https://www.nutritionhabitchallenge.com/downloads/nhc2017-commitments.pdf" target="_blank">Click here to see a list of available commitments.</a></span>
                 <span class="help-block has-error" ng-show="((ctrl.form.category.$touched || ctrl.submitted) && ctrl.form.category.$invalid) || ctrl.serverErrors.category"
                     ng-messages="ctrl.form.category.$error"><div class="has-error" ng-messages-include="views/errormessages.html"></div><span ng-repeat="error in ctrl.serverErrors.category">{{error}}</span></span>
             </div>
@@ -166,7 +167,7 @@
                 </label>
                 <span class="help-block has-error" ng-show="(ctrl.submitted && ctrl.form.userDonation.$invalid) || ctrl.serverErrors.userDonation"
                     ng-messages="ctrl.form.userDonation.$error"><div class="has-error" ng-messages-include="views/errormessages.html"></div><span ng-repeat="error in ctrl.serverErrors.userDonation">{{error}}</span></span>
-                <span id="helpBlock" class="help-block">This website and the Nutrition Habit Challenge are free to our community and is provided by a 100% volunteer committe who work year-round to make this a successful program. In consideration of the value and the comitees' efforts, please consider a donation to one of the following non-profit organizations selected by the committee as beneficiaries of this program.</span>
+                <span id="helpBlock" class="help-block">This website and the Nutrition Habit Challenge are free to our community and is provided by a 100% volunteer committee who work year-round to make this a successful program. In consideration of the value and the commitees' efforts, please consider a donation to one of the following non-profit organizations selected by the committee as beneficiaries of this program.</span>
             </div>
         </div>
     </div>
