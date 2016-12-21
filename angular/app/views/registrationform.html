@@ -43,7 +43,7 @@
                 ng-required="ctrl.newRegistration.isUserOrg">
                     <option value="">-- Choose Organization --</option>
             </select>
-            <span id="helpBlock" class="help-block">Don't see your group or organization? Request that it be added by emailing the name of the organization to info@nutritionhabitchallenge.com<br /><br />
+            <span id="helpBlock" class="help-block">Don't see your group or organization? Request that it be added by emailing the name of the organization to <a href="mailto:info@nutritionhabitchallenge.com" target="_blank">info@nutritionhabitchallenge.com</a><br /><br />
             You can change your group or organization anytime by editing your Profile.
             </span>
             <span class="help-block has-error" ng-show="((ctrl.form.organization.$touched || ctrl.submitted) && ctrl.form.organization.$invalid) || ctrl.serverErrors.organization"
